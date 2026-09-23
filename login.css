@@ -12537,5 +12537,15 @@ transform: translateY(-2px) !important;
     box-shadow: 0 22px 50px rgba(20, 83, 45, 0.15) !important;
     transform: translateY(-2px) !important;
 }
+/* Commit 4 - Improve login input fields */
+.spendwise-login-170 input {
+    border: 1px solid #cde2d3 !important;
+    border-radius: 12px !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
 
-
+.spendwise-login-170 input:focus {
+    border-color: #16834d !important;
+    box-shadow: 0 0 0 3px rgba(22, 131, 77, 0.12) !important;
+    outline: none !important;
+}
