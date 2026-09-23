@@ -12477,3 +12477,47 @@ a.prototype-link {
   text-align: center !important;
   width: 100% !important;
 }
+/* Commit 2 - Refine page background */
+
+.spendwise-login-170 {
+  background: #f7fcf9 !important;
+}
+
+.spendwise-login-170 .node-171 {
+  background: linear-gradient(
+    135deg,
+    #e9f8ef 0%,
+    #f7fcf9 55%,
+    #ffffff 100%
+  ) !important;
+}
+
+.spendwise-login-170 .node-172 {
+  background: rgba(34, 197, 94, 0.06) !important;
+}
+
+.spendwise-login-170 .overlay-blur-173 {
+  background: rgba(22, 131, 77, 0.05) !important;
+}
+/* Commit 2 - Improve SpendWise branding */
+
+.spendwise-login-170 .brand-header-174 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  color: #14532d !important;
+}
+
+.spendwise-login-170 .brand-header-174 .logo-175 {
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: contain !important;
+  border-radius: 10px !important;
+}
+
+.spendwise-login-170 .brand-header-174 .text-176 {
+  color: #14532d !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+}
