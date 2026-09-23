@@ -12555,3 +12555,12 @@ transform: translateY(-2px) !important;
     font-weight: 600 !important;
     letter-spacing: 0.2px;
 }
+/* Commit 7 - Improve login button styling */
+.spendwise-login-170 button {
+    background-color: #16834d !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
