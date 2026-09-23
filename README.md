@@ -1,2 +1,0 @@
-# SPENDWISE
-webdev project 
