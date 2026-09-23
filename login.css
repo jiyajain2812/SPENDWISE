@@ -12294,3 +12294,186 @@ a.prototype-link {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
 }
+/* ===== SpendWise Light Green Theme ===== */
+
+.spendwise-login-170 {
+  background: #f4faf6;
+}
+
+.spendwise-login-170 .node-171 {
+  background: linear-gradient(135deg, #e8f7ee 0%, #f7fcf9 100%);
+}
+
+.spendwise-login-170 .node-172 {
+  background: #dff3e7;
+}
+
+.spendwise-login-170 .overlay-blur-173 {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.spendwise-login-170 .brand-header-174 {
+  color: #14532d;
+}
+
+.spendwise-login-170 .text-white {
+  color: #14532d;
+}
+
+.spendwise-login-170 .text-rgb-148-163-184 {
+  color: #527565;
+}
+
+.spendwise-login-170 .text-rgb-71-85-105 {
+  color: #476657;
+}
+
+.spendwise-login-170 .text-rgb-100-116-139 {
+  color: #648071;
+}
+
+.spendwise-login-170 .text-rgb-2-6-23 {
+  color: #123524;
+}
+
+.spendwise-login-170 .text-rgb-15-23-42 {
+  color: #183c29;
+}
+
+.spendwise-login-170 .text-rgb-30-41-59 {
+  color: #234b34;
+}
+
+.spendwise-login-170 .text-rgb-52-211-153 {
+  color: #16834d;
+}
+
+.spendwise-login-170 .text-rgb-34-211-238 {
+  color: #16834d;
+}
+
+.spendwise-login-170 .node-194 {
+  background: rgba(220, 244, 229, 0.9);
+  border: 1px solid #b7dfc5;
+  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);
+}
+
+.spendwise-login-170 .node-198 {
+  background: #ffffff;
+}
+
+.spendwise-login-170 .container-200 {
+  background: #ffffff;
+  border: 1px solid #d7eadf;
+  box-shadow: 0 20px 50px rgba(20, 83, 45, 0.10);
+}
+
+.spendwise-login-170 .node-211,
+.spendwise-login-170 .node-226 {
+  background: #f8fcf9;
+  border: 1px solid #cfe5d6;
+  box-shadow: none;
+}
+
+.spendwise-login-170 .node-235 {
+  background: #16834d;
+  border: 1px solid #16834d;
+  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25);
+}
+
+.spendwise-login-170 .text-238 {
+  color: #ffffff;
+}
+
+.spendwise-login-170 .alternative-action-239 {
+  color: #648071;
+}
+
+.spendwise-login-170 .text-242 {
+  color: #16834d;
+}
+
+.spendwise-login-170 .text-225 {
+  color: #527565;
+}
+
+.spendwise-login-170 .text-215,
+.spendwise-login-170 .text-230 {
+  color: #183c29;
+}
+
+.spendwise-login-170 .text-210,
+.spendwise-login-170 .text-223 {
+  color: #234b34;
+}
+/* ===== Sign In Button Cleanup ===== */
+
+.spendwise-login-170 .node-235 {
+  position: relative;
+  overflow: hidden;
+  background: #16834d;
+  border: 1px solid #16834d;
+  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25);
+}
+
+.spendwise-login-170 .node-235 .prototype-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.spendwise-login-170 .node-235 .node-236 {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.spendwise-login-170 .node-235 .container-237 {
+  position: relative;
+  z-index: 3;
+}
+
+.spendwise-login-170 .node-235 .text-238 {
+  color: #ffffff;
+}
+
+/* Final login button fix */
+
+.node-235 {
+  width: 100% !important;
+  height: 58px !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background: #16834d !important;
+  border: 1px solid #16834d !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25) !important;
+  overflow: hidden !important;
+}
+
+.node-235 .node-236 {
+  display: none !important;
+}
+
+.node-235 .prototype-link {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+}
+
+.node-235 .container-237 {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.node-235 .text-238 {
+  color: white !important;
+  text-align: center !important;
+  width: 100% !important;
+}
