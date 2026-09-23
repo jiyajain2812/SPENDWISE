@@ -12532,8 +12532,10 @@ a.prototype-link {
 }
 .spendwise-login-170 .container-200:hover {
     box-shadow: 0 22px 50px rgba(20, 83, 45, 0.15) !important;
-}
 transform: translateY(-2px) !important;
-
+.spendwise-login-170 .container-200:hover {
+    box-shadow: 0 22px 50px rgba(20, 83, 45, 0.15) !important;
+    transform: translateY(-2px) !important;
+}
 
 
