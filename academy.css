@@ -8878,7 +8878,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 152.5px;
+  gap: 24px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9041,7 +9041,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 159.99000549316406px;
+  gap: 24px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -12305,4 +12305,16 @@ a.prototype-link {
 
 .academy-search::placeholder {
   color: rgba(148, 163, 184, 1);
+}
+.node-5-equities-node {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 16px;
 }

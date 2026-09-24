@@ -121,13 +121,15 @@
 <div class="body-700">
 <div class="node-701">
 <div class="node-702">
-<div class="button-703">
+<div class="button-703 category-button active-category" data-category="all">
 <p class="text-704"><span class="text-white">All Modules</span></p>
 </div>
-<div class="button-705">
+
+<div class="button-705 category-button" data-category="tax">
 <p class="text-706"><span class="text-rgb-51-65-85">Tax Laws</span></p>
 </div>
-<div class="button-707">
+
+<div class="button-707 category-button" data-category="equities">
 <p class="text-708"><span class="text-rgb-51-65-85">Equities &amp; Indices</span></p>
 </div>
 </div>
@@ -215,6 +217,46 @@
 </div>
 </div>
 </div>
+<div class="node-5-equities-node">
+<div class="node-752"></div>
+<div class="container-753">
+<div class="background-border-754">
+<div class="overlay-shadow-755"></div>
+<p class="text-756"><span class="text-rgb-14-116-144">📈</span></p>
+</div>
+<div class="container-757">
+<div class="heading-3-758">
+<p class="text-759"><span class="text-rgb-2-6-23">Introduction to Equities &amp; Stock Markets</span></p>
+</div>
+<div class="container-760">
+<p class="text-761"><span class="text-rgb-148-163-184">Beginner • 5 Lessons • +100 XP</span></p>
+</div>
+</div>
+</div>
+<div class="container-762">
+<p class="text-763"><span class="text-rgb-14-116-144">AVAILABLE</span></p>
+</div>
+</div>
+</div>
+<div class="node-5-equities-node">
+<div class="node-752"></div>
+<div class="container-753">
+<div class="background-border-754">
+<div class="overlay-shadow-755"></div>
+<p class="text-756"><span class="text-rgb-14-116-144">📈</span></p>
+</div>
+<div class="container-757">
+<div class="heading-3-758">
+<p class="text-759"><span class="text-rgb-2-6-23">Introduction to Equities &amp; Stock Markets</span></p>
+</div>
+<div class="container-760">
+<p class="text-761"><span class="text-rgb-148-163-184">Beginner • 5 Lessons • +100 XP</span></p>
+</div>
+</div>
+</div>
+<div class="container-762">
+<p class="text-763"><span class="text-rgb-14-116-144">AVAILABLE</span></p>
+</div>
 </div>
 <div class="node-764">
 <div class="streak-card-765">
@@ -301,6 +343,30 @@ searchInput.addEventListener('input', function () {
     } else {
       module.style.display = 'none';
     }
+  });
+});
+</script>
+<script>
+const categoryButtons = document.querySelectorAll('.category-button');
+
+categoryButtons.forEach(function (button) {
+  button.addEventListener('click', function () {
+    const category = this.dataset.category;
+    const modules = document.querySelectorAll('.roadmap-nodes-709 > div');
+
+    modules.forEach(function (module) {
+      const moduleText = module.textContent.toLowerCase();
+
+      if (category === 'all') {
+        module.style.display = '';
+      } else if (category === 'tax' && moduleText.includes('tax')) {
+        module.style.display = '';
+      } else if (category === 'equities' && (moduleText.includes('equity') || moduleText.includes('investment'))) {
+        module.style.display = '';
+      } else {
+        module.style.display = 'none';
+      }
+    });
   });
 });
 </script>
