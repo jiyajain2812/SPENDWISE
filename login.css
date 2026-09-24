@@ -12564,3 +12564,21 @@ transform: translateY(-2px) !important;
     font-weight: 600 !important;
     transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
+/* Commit 9 - Add responsive login layout */
+
+@media (max-width: 768px) {
+    .spendwise-login-170 {
+        padding: 20px !important;
+    }
+
+    .spendwise-login-170 .container-200 {
+        width: 100% !important;
+        max-width: 420px !important;
+        margin: 0 auto !important;
+        padding: 22px !important;
+    }
+
+    .spendwise-login-170 .brand-header-174 {
+        justify-content: center !important;
+    }
+}
