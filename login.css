@@ -12582,3 +12582,44 @@ transform: translateY(-2px) !important;
         justify-content: center !important;
     }
 }
+.spendwise-login-170 {
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+
+.spendwise-login-170 .brand-panel {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 30px 20px !important;
+}
+
+.spendwise-login-170 .auth-panel {
+    width: 100% !important;
+    padding: 20px !important;
+}
+.spendwise-login-170 {
+    flex-direction: column !important;
+    align-items: stretch !important;
+}
+
+.spendwise-login-170 .node-171 {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 30px 20px !important;
+}
+
+.spendwise-login-170 .node-198 {
+    width: 100% !important;
+    padding: 20px !important;
+}
+/* Improve login button interaction */
+.spendwise-login-170 button:hover {
+    background-color: #14532d !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 83, 45, 0.25);
+}
+
+.spendwise-login-170 button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(20, 83, 45, 0.2);
+}
