@@ -286,6 +286,23 @@ Streak</span></p>
 </div>
 </div>
 </div>
+<script>
+const searchInput = document.querySelector('.academy-search');
+const modules = document.querySelectorAll('.roadmap-nodes-709 > div');
 
+searchInput.addEventListener('input', function () {
+  const searchText = this.value.toLowerCase();
+
+  modules.forEach(function (module) {
+    const moduleText = module.textContent.toLowerCase();
+
+    if (moduleText.includes(searchText)) {
+      module.style.display = '';
+    } else {
+      module.style.display = 'none';
+    }
+  });
+});
+</script>
 </body>
 </html>
