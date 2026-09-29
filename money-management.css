@@ -12293,4 +12293,16 @@ a.prototype-link {
   flex-grow: 0;
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
+
+  /* responsive outflow cards */
+.container-334 {
+  flex-wrap: wrap;
+}
+
+.background-border-335,
+.background-border-342,
+.background-border-349,
+.background-border-356 {
+  flex: 1 1 180px;
+}
 }
