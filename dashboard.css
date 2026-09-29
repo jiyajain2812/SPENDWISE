@@ -8613,7 +8613,7 @@ a.prototype-link {
   flex-shrink: 1;
   flex-basis: auto;
 }
-
+/* Adds balanced vertical and horizontal spacing to the dashboard header */
 .header-681 {
   display: flex;
   flex-direction: row;
@@ -9519,7 +9519,7 @@ a.prototype-link {
   flex-shrink: 1;
   flex-basis: auto;
 }
-
+/* Keeps the streak card compact while maintaining comfortable internal spacing */
 .streak-card-765 {
   display: flex;
   flex-direction: column;
@@ -9858,7 +9858,7 @@ a.prototype-link {
   flex-shrink: 1;
   width: 100%;
 }
-
+/* Adds consistent spacing between earned badge items */
 .earned-badges-776 {
   display: flex;
   flex-direction: column;
