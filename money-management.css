@@ -260,7 +260,6 @@ a.prototype-link:focus-visible {
   font-size: 18px;
   line-height: 29.25px;
   text-decoration: none;
-  text-transform: none;
   color: var(--text-rgb-71-85-105);
 }
 
