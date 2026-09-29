@@ -9864,7 +9864,7 @@ a.prototype-link {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   padding: 0px;
   flex-grow: 0;
   flex-shrink: 1;
