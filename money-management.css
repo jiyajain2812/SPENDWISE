@@ -221,7 +221,6 @@ a.prototype-link:focus-visible {
 .text-12 {
   flex-grow: 0;
   flex-shrink: 1;
-  flex-basis: auto;
   text-align: left;
   font-family: var(--font-family-arapey);
   font-weight: normal;
@@ -229,7 +228,8 @@ a.prototype-link:focus-visible {
   line-height: 72px;
   text-decoration: none;
   text-transform: none;
-  color: var(--text-rgb-2-6-23);
+  color: var(--text-rgb-51-65-85);
+
   font-family: var(--font-family-arapey);
   font-weight: normal;
   font-size: 72px;
