@@ -150,6 +150,10 @@ a.prototype-link {
   color: inherit;
   display: contents;
 }
+a.prototype-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 
 .background-shadow-8 {
   flex-grow: 0;
