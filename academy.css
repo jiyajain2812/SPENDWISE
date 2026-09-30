@@ -8387,8 +8387,9 @@ a.prototype-link {
   gap: 578px;
   padding: 24px;
   flex-grow: 0;
-  flex-shrink: 1;
-  width: 100%;
+  flex-shrink: 0;
+  width: 260px;
+  min-width: 260px;
   min-height: 1024px;
   background-color: rgba(11, 15, 25, 1);
   border-right: 1px solid rgba(30, 41, 59, 1);
@@ -8720,6 +8721,11 @@ a.prototype-link {
   border-radius: 9999px;
 }
 
+.category-button.active-category {
+  background-color: rgba(15, 23, 42, 0.8199999928474426);
+  border: 1px solid rgba(255, 255, 255, 0.18000000715255737);
+}
+
 .node-702 {
   display: flex;
   flex-direction: row;
@@ -8878,7 +8884,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 152.5px;
+  gap: 24px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9041,7 +9047,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 159.99000549316406px;
+  gap: 24px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9334,9 +9340,10 @@ a.prototype-link {
   align-items: center;
   gap: 16px;
   padding: 0px;
-  flex-grow: 0;
+  flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
+  min-width: 0;
 }
 
 .text-763 {
@@ -9401,7 +9408,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 61.403505425704154%;
+  width: 100%;
 }
 
 .streak-card-shadow-766 {
@@ -9903,7 +9910,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 81.83041722745625%;
+  width: auto;
   background-color: rgba(248, 250, 252, 1);
 }
 
@@ -11736,7 +11743,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 61.403505425704154%;
+  width: 100%;
 }
 
 .node-956 {
@@ -12305,4 +12312,16 @@ a.prototype-link {
 
 .academy-search::placeholder {
   color: rgba(148, 163, 184, 1);
+}
+.node-5-equities-node {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 16px;
 }
