@@ -8387,9 +8387,8 @@ a.prototype-link {
   gap: 578px;
   padding: 24px;
   flex-grow: 0;
-  flex-shrink: 0;
-  width: 260px;
-  min-width: 260px;
+  flex-shrink: 1;
+  width: 100%;
   min-height: 1024px;
   background-color: rgba(11, 15, 25, 1);
   border-right: 1px solid rgba(30, 41, 59, 1);
@@ -8614,14 +8613,14 @@ a.prototype-link {
   flex-shrink: 1;
   flex-basis: auto;
 }
-
+/* Adds balanced vertical and horizontal spacing to the dashboard header */
 .header-681 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 18.799999237060547px;
-  padding: 0px 40px 0px 40px;
+  padding: 12px 40px;
   flex-grow: 0;
   flex-shrink: 1;
   width: 100%;
@@ -8721,14 +8720,6 @@ a.prototype-link {
   border-radius: 9999px;
 }
 
-.category-button.active-category {
-  background-color: rgba(15, 23, 42, 0.8199999928474426);
-  border: 1px solid rgba(255, 255, 255, 0.18000000715255737);
-  color: #ffffff;
-}
-.category-button.active-category .text-rgb-51-65-85 {
-  color: #ffffff;
-}
 .node-702 {
   display: flex;
   flex-direction: row;
@@ -8887,7 +8878,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 152.5px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9050,7 +9041,7 @@ a.prototype-link {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 159.99000549316406px;
   padding: 24px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9343,10 +9334,9 @@ a.prototype-link {
   align-items: center;
   gap: 16px;
   padding: 0px;
-  flex-grow: 1;
+  flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
-  min-width: 0;
 }
 
 .text-763 {
@@ -9411,7 +9401,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 100%;
+  width: 61.403505425704154%;
 }
 
 .streak-card-shadow-766 {
@@ -9529,14 +9519,14 @@ a.prototype-link {
   flex-shrink: 1;
   flex-basis: auto;
 }
-
+/* Keeps the streak card compact while maintaining comfortable internal spacing */
 .streak-card-765 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 12px;
-  padding: 24px;
+  padding: 20px;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
@@ -9868,13 +9858,13 @@ a.prototype-link {
   flex-shrink: 1;
   width: 100%;
 }
-
+/* Adds consistent spacing between earned badge items */
 .earned-badges-776 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   padding: 0px;
   flex-grow: 0;
   flex-shrink: 1;
@@ -9913,7 +9903,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: auto;
+  width: 81.83041722745625%;
   background-color: rgba(248, 250, 252, 1);
 }
 
@@ -11746,7 +11736,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 100%;
+  width: 61.403505425704154%;
 }
 
 .node-956 {
@@ -12304,27 +12294,19 @@ a.prototype-link {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
 }
-.academy-search {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-}
+/* Dashboard responsive layout */
+@media (max-width: 768px) {
+  .body-content-534 {
+    flex-direction: column;
+    padding: 24px 16px;
+  }
 
-.academy-search::placeholder {
-  color: rgba(148, 163, 184, 1);
-}
-.node-5-equities-node {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 24px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(226, 232, 240, 0.6);
-  border-radius: 16px;
+  .main-dashboard-view-511 {
+    width: 100%;
+  }
+
+  .header-681 {
+    padding: 12px 16px;
+    gap: 12px;
+  }
 }
