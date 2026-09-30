@@ -12495,3 +12495,200 @@ a.prototype-link {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
 }
+/* =========================================================
+   INVESTMENT PAGE LAYOUT FIX
+   ========================================================= */
+
+/* Main page shell */
+.node-804 {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+}
+
+/* Fixed-width sidebar */
+.aside-sidebar-805 {
+  flex: 0 0 280px;
+  width: 280px;
+  min-height: 100vh;
+  height: 100vh;
+  gap: 40px;
+  justify-content: flex-start;
+  position: sticky;
+  top: 0;
+}
+
+/* Main workspace */
+.main-workspace-846 {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+/* Header */
+.node-847 {
+  gap: 24px;
+  padding: 18px 32px;
+  min-height: 76px;
+}
+
+/* Main content becomes a proper two-column dashboard */
+.body-866 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  padding: 28px 32px 40px;
+  width: 100%;
+  max-width: none;
+  align-items: start;
+}
+
+/* Left column */
+.node-867 {
+  width: auto;
+  min-width: 0;
+  flex: none;
+  gap: 20px;
+}
+
+/* Portfolio summary card */
+.node-868 {
+  width: 100%;
+  min-height: 150px;
+  gap: 24px;
+  padding: 28px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.18);
+}
+
+/* Remove the invisible empty decorative layer */
+.node-869 {
+  display: none;
+}
+
+/* Make portfolio value visible */
+.text-874 {
+  color: var(--text-rgb-2-6-23);
+  font-size: 44px;
+  line-height: 48px;
+  letter-spacing: -1px;
+}
+
+/* Performance badge */
+.node-876 {
+  padding: 7px 14px;
+  background-color: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 12px;
+}
+
+/* Holdings section */
+.holdings-list-878 {
+  width: 100%;
+  gap: 14px;
+}
+
+.container-879 {
+  width: 100%;
+  gap: 20px;
+}
+
+.container-889 {
+  width: 100%;
+  gap: 14px;
+}
+
+/* Holdings cards */
+.holding-1-890,
+.holding-2-906,
+.holding-3-922,
+.holding-4-938 {
+  width: 100%;
+  gap: 24px;
+  min-height: 112px;
+  padding: 18px 24px;
+}
+
+/* Right column */
+.node-954 {
+  width: auto;
+  min-width: 0;
+  flex: none;
+  gap: 20px;
+}
+
+/* Asset allocation card */
+.node-955 {
+  width: 100%;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* Asset allocation contents */
+.container-959 {
+  width: 100%;
+  gap: 20px;
+}
+
+.donut-graphic-960 {
+  width: 42%;
+}
+
+.legend-966 {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sandbox card */
+.node-983 {
+  width: 100%;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+  .aside-sidebar-805 {
+    flex-basis: 230px;
+    width: 230px;
+  }
+
+  .body-866 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .node-954 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .aside-sidebar-805 {
+    flex-basis: 200px;
+    width: 200px;
+    padding: 16px;
+  }
+
+  .body-866 {
+    padding: 20px 16px 32px;
+  }
+
+  .node-847 {
+    padding: 16px;
+  }
+
+  .node-868 {
+    padding: 22px;
+  }
+
+  .text-874 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
