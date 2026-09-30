@@ -1,0 +1,339 @@
+warning: in the working copy of 'login.css', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/login.css b/login.css[m
+[1mindex 60e8165..7d9e067 100644[m
+[1m--- a/login.css[m
+[1m+++ b/login.css[m
+[36m@@ -12294,332 +12294,3 @@[m [ma.prototype-link {[m
+   flex-shrink: 1;[m
+   background-color: rgba(255, 255, 255, 1);[m
+ }[m
+[31m-/* ===== SpendWise Light Green Theme ===== */[m
+[31m-[m
+[31m-.spendwise-login-170 {[m
+[31m-  background: #f4faf6;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-171 {[m
+[31m-  background: linear-gradient(135deg, #e8f7ee 0%, #f7fcf9 100%);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-172 {[m
+[31m-  background: #dff3e7;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .overlay-blur-173 {[m
+[31m-  background: rgba(255, 255, 255, 0.35);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .brand-header-174 {[m
+[31m-  color: #14532d;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-white {[m
+[31m-  color: #14532d;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-148-163-184 {[m
+[31m-  color: #527565;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-71-85-105 {[m
+[31m-  color: #476657;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-100-116-139 {[m
+[31m-  color: #648071;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-2-6-23 {[m
+[31m-  color: #123524;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-15-23-42 {[m
+[31m-  color: #183c29;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-30-41-59 {[m
+[31m-  color: #234b34;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-52-211-153 {[m
+[31m-  color: #16834d;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-rgb-34-211-238 {[m
+[31m-  color: #16834d;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-194 {[m
+[31m-  background: rgba(220, 244, 229, 0.9);[m
+[31m-  border: 1px solid #b7dfc5;[m
+[31m-  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-198 {[m
+[31m-  background: #ffffff;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .container-200 {[m
+[31m-  background: #ffffff;[m
+[31m-  border: 1px solid #d7eadf;[m
+[31m-  box-shadow: 0 20px 50px rgba(20, 83, 45, 0.10);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-211,[m
+[31m-.spendwise-login-170 .node-226 {[m
+[31m-  background: #f8fcf9;[m
+[31m-  border: 1px solid #cfe5d6;[m
+[31m-  box-shadow: none;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 {[m
+[31m-  background: #16834d;[m
+[31m-  border: 1px solid #16834d;[m
+[31m-  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-238 {[m
+[31m-  color: #ffffff;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .alternative-action-239 {[m
+[31m-  color: #648071;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-242 {[m
+[31m-  color: #16834d;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-225 {[m
+[31m-  color: #527565;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-215,[m
+[31m-.spendwise-login-170 .text-230 {[m
+[31m-  color: #183c29;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .text-210,[m
+[31m-.spendwise-login-170 .text-223 {[m
+[31m-  color: #234b34;[m
+[31m-}[m
+[31m-/* ===== Sign In Button Cleanup ===== */[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 {[m
+[31m-  position: relative;[m
+[31m-  overflow: hidden;[m
+[31m-  background: #16834d;[m
+[31m-  border: 1px solid #16834d;[m
+[31m-  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 .prototype-link {[m
+[31m-  position: absolute;[m
+[31m-  inset: 0;[m
+[31m-  z-index: 2;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 .node-236 {[m
+[31m-  width: 100%;[m
+[31m-  height: 100%;[m
+[31m-  opacity: 0;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 .container-237 {[m
+[31m-  position: relative;[m
+[31m-  z-index: 3;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-235 .text-238 {[m
+[31m-  color: #ffffff;[m
+[31m-}[m
+[31m-[m
+[31m-/* Final login button fix */[m
+[31m-[m
+[31m-.node-235 {[m
+[31m-  width: 100% !important;[m
+[31m-  height: 58px !important;[m
+[31m-  padding: 0 !important;[m
+[31m-  display: flex !important;[m
+[31m-  justify-content: center !important;[m
+[31m-  align-items: center !important;[m
+[31m-  background: #16834d !important;[m
+[31m-  border: 1px solid #16834d !important;[m
+[31m-  border-radius: 12px !important;[m
+[31m-  box-shadow: 0 8px 20px rgba(22, 131, 77, 0.25) !important;[m
+[31m-  overflow: hidden !important;[m
+[31m-}[m
+[31m-[m
+[31m-.node-235 .node-236 {[m
+[31m-  display: none !important;[m
+[31m-}[m
+[31m-[m
+[31m-.node-235 .prototype-link {[m
+[31m-  position: absolute !important;[m
+[31m-  inset: 0 !important;[m
+[31m-  z-index: 1 !important;[m
+[31m-}[m
+[31m-[m
+[31m-.node-235 .container-237 {[m
+[31m-  position: relative !important;[m
+[31m-  z-index: 2 !important;[m
+[31m-  width: 100% !important;[m
+[31m-  display: flex !important;[m
+[31m-  justify-content: center !important;[m
+[31m-  align-items: center !important;[m
+[31m-}[m
+[31m-[m
+[31m-.node-235 .text-238 {[m
+[31m-  color: white !important;[m
+[31m-  text-align: center !important;[m
+[31m-  width: 100% !important;[m
+[31m-}[m
+[31m-/* Commit 2 - Refine page background */[m
+[31m-[m
+[31m-.spendwise-login-170 {[m
+[31m-  background: #f7fcf9 !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-171 {[m
+[31m-  background: linear-gradient([m
+[31m-    135deg,[m
+[31m-    #e9f8ef 0%,[m
+[31m-    #f7fcf9 55%,[m
+[31m-    #ffffff 100%[m
+[31m-  ) !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-172 {[m
+[31m-  background: rgba(34, 197, 94, 0.06) !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .overlay-blur-173 {[m
+[31m-  background: rgba(22, 131, 77, 0.05) !important;[m
+[31m-}[m
+[31m-/* Commit 2 - Improve SpendWise branding */[m
+[31m-[m
+[31m-.spendwise-login-170 .brand-header-174 {[m
+[31m-  display: flex !important;[m
+[31m-  align-items: center !important;[m
+[31m-  gap: 14px !important;[m
+[31m-  color: #14532d !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .brand-header-174 .logo-175 {[m
+[31m-  width: 48px !important;[m
+[31m-  height: 48px !important;[m
+[31m-  object-fit: contain !important;[m
+[31m-  border-radius: 10px !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .brand-header-174 .text-176 {[m
+[31m-  color: #14532d !important;[m
+[31m-  font-size: 28px !important;[m
+[31m-  font-weight: 600 !important;[m
+[31m-  letter-spacing: -0.5px !important;[m
+[31m-}[m
+[31m-/* Commit 3 - Improve authentication card */[m
+[31m-[m
+[31m-.spendwise-login-170 .container-200 {[m
+[31m-  background: rgba(255, 255, 255, 0.96) !important;[m
+[31m-  border: 1px solid #cde8d8 !important;[m
+[31m-  border-radius: 16px !important;[m
+[31m-  box-shadow: 0 18px 45px rgba(20, 83, 45, 0.10) !important;[m
+[31m-  padding: 28px !important;[m
+[31m-}[m
+[31m-.spendwise-login-170 .container-200:hover {[m
+[31m-    box-shadow: 0 22px 50px rgba(20, 83, 45, 0.15) !important;[m
+[31m-transform: translateY(-2px) !important;[m
+[31m-.spendwise-login-170 .container-200:hover {[m
+[31m-    box-shadow: 0 22px 50px rgba(20, 83, 45, 0.15) !important;[m
+[31m-    transform: translateY(-2px) !important;[m
+[31m-}[m
+[31m-/* Commit 4 - Improve login input fields */[m
+[31m-.spendwise-login-170 input {[m
+[31m-    border: 1px solid #cde2d3 !important;[m
+[31m-    border-radius: 12px !important;[m
+[31m-    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 input:focus {[m
+[31m-    border-color: #16834d !important;[m
+[31m-    box-shadow: 0 0 0 3px rgba(22, 131, 77, 0.12) !important;[m
+[31m-    outline: none !important;[m
+[31m-}[m
+[31m-/* Commit 5 - Improve login field labels */[m
+[31m-.spendwise-login-170 label {[m
+[31m-    color: #14532d !important;[m
+[31m-    font-weight: 600 !important;[m
+[31m-    letter-spacing: 0.2px;[m
+[31m-}[m
+[31m-/* Commit 7 - Improve login button styling */[m
+[31m-.spendwise-login-170 button {[m
+[31m-    background-color: #16834d !important;[m
+[31m-    color: white !important;[m
+[31m-    border: none !important;[m
+[31m-    border-radius: 10px !important;[m
+[31m-    font-weight: 600 !important;[m
+[31m-    transition: background-color 0.2s ease, transform 0.2s ease !important;[m
+[31m-}[m
+[31m-/* Commit 9 - Add responsive login layout */[m
+[31m-[m
+[31m-@media (max-width: 768px) {[m
+[31m-    .spendwise-login-170 {[m
+[31m-        padding: 20px !important;[m
+[31m-    }[m
+[31m-[m
+[31m-    .spendwise-login-170 .container-200 {[m
+[31m-        width: 100% !important;[m
+[31m-        max-width: 420px !important;[m
+[31m-        margin: 0 auto !important;[m
+[31m-        padding: 22px !important;[m
+[31m-    }[m
+[31m-[m
+[31m-    .spendwise-login-170 .brand-header-174 {[m
+[31m-        justify-content: center !important;[m
+[31m-    }[m
+[31m-}[m
+[31m-.spendwise-login-170 {[m
+[31m-    flex-direction: column !important;[m
+[31m-    min-height: 100vh !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .brand-panel {[m
+[31m-    width: 100% !important;[m
+[31m-    min-height: auto !important;[m
+[31m-    padding: 30px 20px !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .auth-panel {[m
+[31m-    width: 100% !important;[m
+[31m-    padding: 20px !important;[m
+[31m-}[m
+[31m-.spendwise-login-170 {[m
+[31m-    flex-direction: column !important;[m
+[31m-    align-items: stretch !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-171 {[m
+[31m-    width: 100% !important;[m
+[31m-    min-height: auto !important;[m
+[31m-    padding: 30px 20px !important;[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 .node-198 {[m
+[31m-    width: 100% !important;[m
+[31m-    padding: 20px !important;[m
+[31m-}[m
+[31m-/* Improve login button interaction */[m
+[31m-.spendwise-login-170 button:hover {[m
+[31m-    background-color: #14532d !important;[m
+[31m-    transform: translateY(-2px);[m
+[31m-    box-shadow: 0 6px 18px rgba(20, 83, 45, 0.25);[m
+[31m-}[m
+[31m-[m
+[31m-.spendwise-login-170 button:active {[m
+[31m-    transform: translateY(0);[m
+[31m-    box-shadow: 0 3px 8px rgba(20, 83, 45, 0.2);[m
+[31m-}[m
+\ No newline at end of file[m
