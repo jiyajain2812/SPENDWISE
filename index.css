@@ -1000,7 +1000,7 @@ a.prototype-link {
   box-shadow: inset 0px -1px 1.5px 1px rgba(0,0,0,0.5);
   background-color: rgba(251, 191, 36, 0.10000000149011612);
   border: 1px solid rgba(251, 191, 36, 0.20000000298023224);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .quick-insight-64 {
