@@ -8387,8 +8387,9 @@ a.prototype-link {
   gap: 578px;
   padding: 24px;
   flex-grow: 0;
-  flex-shrink: 1;
-  width: 100%;
+  flex-shrink: 0;
+  width: 260px;
+  min-width: 260px;
   min-height: 1024px;
   background-color: rgba(11, 15, 25, 1);
   border-right: 1px solid rgba(30, 41, 59, 1);
@@ -9401,7 +9402,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 61.403505425704154%;
+  width: 100%;
 }
 
 .streak-card-shadow-766 {
@@ -9903,7 +9904,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 81.83041722745625%;
+  width: auto;
   background-color: rgba(248, 250, 252, 1);
 }
 
@@ -11736,7 +11737,7 @@ a.prototype-link {
   padding: 0px;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 61.403505425704154%;
+  width: 100%;
 }
 
 .node-956 {
