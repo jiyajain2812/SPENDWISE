@@ -9335,9 +9335,10 @@ a.prototype-link {
   align-items: center;
   gap: 16px;
   padding: 0px;
-  flex-grow: 0;
+  flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
+  min-width: 0;
 }
 
 .text-763 {
