@@ -309,7 +309,7 @@ Streak</span></p>
 </div>
 <script>
 const searchInput = document.querySelector('.academy-search');
-const modules = document.querySelectorAll('.roadmap-nodes-709 > div');
+const modules = document.querySelectorAll('.roadmap-nodes-709 > div, .node-5-equities-node');
 
 searchInput.addEventListener('input', function () {
   const searchText = this.value.toLowerCase();
@@ -331,7 +331,11 @@ const categoryButtons = document.querySelectorAll('.category-button');
 categoryButtons.forEach(function (button) {
   button.addEventListener('click', function () {
     const category = this.dataset.category;
-    const modules = document.querySelectorAll('.roadmap-nodes-709 > div');
+    categoryButtons.forEach(function (btn) {
+      btn.classList.remove('active-category');
+    });
+    this.classList.add('active-category');
+    const modules = document.querySelectorAll('.roadmap-nodes-709 > div, .node-5-equities-node');
 
     modules.forEach(function (module) {
       const moduleText = module.textContent.toLowerCase();
@@ -340,7 +344,7 @@ categoryButtons.forEach(function (button) {
         module.style.display = '';
       } else if (category === 'tax' && moduleText.includes('tax')) {
         module.style.display = '';
-      } else if (category === 'equities' && (moduleText.includes('equity') || moduleText.includes('investment'))) {
+      } else if (category === 'equities' && (moduleText.includes('equity') || moduleText.includes('equities') || moduleText.includes('investment'))) {
         module.style.display = '';
       } else {
         module.style.display = 'none';
