@@ -319,6 +319,7 @@ a.prototype-link {
   background-color: rgba(11, 15, 25, 0.9200000166893005);
   border: 1px solid rgba(255, 255, 255, 0.18000000715255737);
   border-radius: 16px;
+  transform: translateY(-1px);
 }
 
 .button-shadow-22 {
