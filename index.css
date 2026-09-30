@@ -2674,7 +2674,7 @@ a.prototype-link {
   font-family: var(--font-family-plus-jakarta-sans);
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.6000000238418579px;
+  letter-spacing: 0.6px;
   line-height: 16px;
   text-decoration: none;
   text-transform: uppercase;
