@@ -12294,3 +12294,22 @@ a.prototype-link {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
 }
+/* Remember UPI ID checkbox */
+.remember-login {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.remember-login label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-login input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
