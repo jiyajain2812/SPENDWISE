@@ -83,13 +83,24 @@ loginForm.addEventListener("submit", function (event) {
     // SUCCESS
     // ===============================
 
-    showSuccess("Login successful! Redirecting...");
+    // Save login submission as JSON in localStorage
+const loginData = {
+    email: email,
+    submittedAt: new Date().toISOString(),
+    loginSuccessful: true
+};
 
-    setTimeout(function () {
+localStorage.setItem("spendwiseLoginData", JSON.stringify(loginData));
 
-        window.location.href = "dashboard.html";
+saveLoginData(email, password);
 
-    }, 1000);
+showSuccess("Login successful! Redirecting...");
+
+setTimeout(function () {
+
+    window.location.href = "dashboard.html";
+
+}, 1000);
 
 });
 
@@ -111,4 +122,31 @@ function showSuccess(message) {
     loginMessage.textContent = message;
     loginMessage.className = "login-message success";
 
+}
+// ===============================
+// SAVE LOGIN DATA AS JSON
+// ===============================
+
+function saveLoginData(email, password) {
+
+    const loginData = {
+        email: email,
+        password: password,
+        loginTime: new Date().toLocaleString()
+    };
+
+    const jsonData = JSON.stringify(loginData, null, 4);
+
+    const blob = new Blob([jsonData], {
+        type: "application/json"
+    });
+
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "loginData.json";
+
+    downloadLink.click();
+
+    URL.revokeObjectURL(downloadLink.href);
 }
