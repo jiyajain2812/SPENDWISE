@@ -72,62 +72,117 @@ intelligence.</span></p>
 <p class="text-206"><span class="text-rgb-100-116-139">Access your simulated portfolio &amp; campus UPI ledgers.</span></p>
 </div>
 </div>
-<div class="login-form-207">
-<div class="field-id-208">
-<div class="label-209">
-<p class="text-210"><span class="text-rgb-30-41-59">STUDENT UPI ID OR EMAIL</span></p>
-</div>
-<div class="node-211">
-<div class="overlay-shadow-212"></div>
-<div class="input-213">
-<div class="container-214">
-<p class="text-215"><span class="text-rgb-15-23-42">tanvi.bansal@paytm</span></p>
-</div>
-</div>
-<div class="container-216">
-<div class="svg-217">
-<div class="svg-218">
-<img src="images/vector-219.svg" class="vector-219" alt="vector" />
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="field-password-220">
-<div class="container-221">
-<div class="label-222">
-<p class="text-223"><span class="text-rgb-30-41-59">SECURITY KEY</span></p>
-</div>
-<div class="link-224">
-<p class="text-225"><span class="text-rgb-71-85-105">Forgot password?</span></p>
-</div>
-</div>
-<div class="node-226">
-<div class="overlay-shadow-227"></div>
-<div class="input-228">
-<div class="container-229">
-<p class="text-230"><span class="text-rgb-15-23-42">••••••••••••</span></p>
-</div>
-</div>
-<div class="button-231">
-<div class="svg-232">
-<img src="images/vector-233.svg" class="vector-233" alt="vector" />
-<img src="images/vector-234.svg" class="vector-234" alt="vector" />
-</div>
-</div>
-</div>
-</div>
-<div class="node-235">
-<a href="dashboard.html" class="prototype-link">
-<img src="images/node-236.svg" class="node-236" alt="action-button-with-3d-pop-ios-frosted-glass-styling-shadow" />
-</a>
-<div class="container-237">
-<p class="text-238"><span class="text-white">Sign in to Workspace</span></p>
-</div>
-</div>
-<div class="alternative-action-239">
-<p class="text-240"><span class="text-rgb-100-116-139">New to campus sandbox? </span></p>
-<div class="link-241">
+<form class="login-form-207" id="loginForm">
+
+  <!-- Email / UPI ID -->
+  <div class="field-id-208">
+
+    <div class="label-209">
+      <label for="loginEmail" class="text-210">
+        STUDENT UPI ID OR EMAIL
+      </label>
+    </div>
+
+    <div class="node-211">
+
+      <div class="overlay-shadow-212"></div>
+
+      <div class="input-213">
+        <input
+          type="text"
+          id="loginEmail"
+          name="email"
+          placeholder="Enter your UPI ID or email"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Password -->
+  <div class="field-password-220">
+
+    <div class="container-221">
+
+      <div class="label-222">
+        <label for="loginPassword" class="text-223">
+          SECURITY KEY
+        </label>
+      </div>
+
+      <button
+        type="button"
+        id="togglePassword"
+        class="link-224"
+      >
+        Show
+      </button>
+
+    </div>
+
+    <div class="node-226">
+
+      <div class="overlay-shadow-227"></div>
+
+      <div class="input-228">
+        <input
+          type="password"
+          id="loginPassword"
+          name="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          minlength="6"
+          required
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Login button -->
+  <button
+    type="submit"
+    class="node-235"
+    id="loginButton"
+  >
+    <span class="text-238">
+      Sign in to Workspace
+    </span>
+  </button>
+
+
+  <!-- Message area -->
+  <p
+    id="loginMessage"
+    class="login-message"
+    aria-live="polite"
+  ></p>
+
+
+  <!-- Register link -->
+  <div class="alternative-action-239">
+
+    <p class="text-240">
+      New to campus sandbox?
+    </p>
+
+    <a
+      href="register.html"
+      class="link-241"
+    >
+      Register verified student ID
+    </a>
+
+  </div>
+
+</form>
+
 <p class="text-242"><span class="text-rgb-2-6-23">Register verified student ID</span></p>
 </div>
 </div>
@@ -136,5 +191,7 @@ intelligence.</span></p>
 </div>
 </div>
 
+<script src="login.js"></script>
 </body>
 </html>
+ 
