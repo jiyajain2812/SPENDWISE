@@ -8,7 +8,7 @@ const emailInput = document.getElementById("loginEmail");
 const passwordInput = document.getElementById("loginPassword");
 const togglePassword = document.getElementById("togglePassword");
 const loginMessage = document.getElementById("loginMessage");
-
+const rememberMe = document.getElementById("rememberMe");
 
 // ===============================
 // SHOW / HIDE PASSWORD
@@ -149,4 +149,14 @@ function saveLoginData(email, password) {
     downloadLink.click();
 
     URL.revokeObjectURL(downloadLink.href);
+}
+// ===============================
+// REMEMBER LOGIN
+// ===============================
+
+const savedEmail = localStorage.getItem("spendwiseEmail");
+
+if (savedEmail) {
+    emailInput.value = savedEmail;
+    rememberMe.checked = true;
 }
