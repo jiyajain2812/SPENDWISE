@@ -307,52 +307,54 @@ Streak</span></p>
 </div>
 </div>
 </div>
+
 <script>
-const searchInput = document.querySelector('.academy-search');
-const modules = document.querySelectorAll('.roadmap-nodes-709 > div, .node-5-equities-node');
+(() => {
+  const searchInput = document.querySelector(".academy-search");
+  const categoryButtons = document.querySelectorAll(".category-button");
+  const modules = document.querySelectorAll(
+    ".roadmap-nodes-709 > div, .node-5-equities-node"
+  );
 
-searchInput.addEventListener('input', function () {
-  const searchText = this.value.toLowerCase();
+  let activeCategory = "all";
 
-  modules.forEach(function (module) {
-    const moduleText = module.textContent.toLowerCase();
+  function filterModules() {
+    const searchText = (searchInput?.value || "").trim().toLowerCase();
 
-    if (moduleText.includes(searchText)) {
-      module.style.display = '';
-    } else {
-      module.style.display = 'none';
-    }
-  });
-});
-</script>
-<script>
-const categoryButtons = document.querySelectorAll('.category-button');
+    modules.forEach(module => {
+      const text = module.textContent.toLowerCase();
+      const matchesSearch = text.includes(searchText);
 
-categoryButtons.forEach(function (button) {
-  button.addEventListener('click', function () {
-    const category = this.dataset.category;
-    categoryButtons.forEach(function (btn) {
-      btn.classList.remove('active-category');
+      const matchesCategory =
+        activeCategory === "all" ||
+        (activeCategory === "tax" && text.includes("tax")) ||
+        (activeCategory === "equities" &&
+          (text.includes("equity") ||
+           text.includes("equities") ||
+           text.includes("stock market")));
+
+      module.style.display =
+        matchesSearch && matchesCategory ? "" : "none";
     });
-    this.classList.add('active-category');
-    const modules = document.querySelectorAll('.roadmap-nodes-709 > div, .node-5-equities-node');
+  }
 
-    modules.forEach(function (module) {
-      const moduleText = module.textContent.toLowerCase();
+  searchInput?.addEventListener("input", filterModules);
 
-      if (category === 'all') {
-        module.style.display = '';
-      } else if (category === 'tax' && moduleText.includes('tax')) {
-        module.style.display = '';
-      } else if (category === 'equities' && (moduleText.includes('equity') || moduleText.includes('equities') || moduleText.includes('investment'))) {
-        module.style.display = '';
-      } else {
-        module.style.display = 'none';
-      }
+  categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.category;
+
+      categoryButtons.forEach(btn =>
+        btn.classList.remove("active-category")
+      );
+
+      button.classList.add("active-category");
+      filterModules();
     });
   });
-});
+})();
 </script>
+
 <script src="academy.js"></script>
 </body>
 </html>

@@ -27,6 +27,7 @@
 
     state.lessonsCompleted ||= {};
     state.lessonsCompleted.taxation ??= 2;
+    state.lessonsCompleted.equities ??= 0;
     state.quizResults ||= [];
     state.xp = Number(state.xp) || 0;
   } catch (error) {
@@ -458,10 +459,301 @@
     renderLesson();
   }
 
+  const equitiesLessons = [
+  {
+    title: "Introduction to Stock Markets",
+    content: "A stock market is a place where shares of companies are bought and sold.",
+    question: "What does buying a share represent?",
+    options: ["Ownership in a company", "A guaranteed salary", "A bank deposit"],
+    answer: 0
+  },
+  {
+    title: "Understanding Shares",
+    content: "A share represents a unit of ownership in a company.",
+    question: "Can share prices fall?",
+    options: ["Never", "Yes, prices fluctuate", "Only on Sundays"],
+    answer: 1
+  },
+  {
+    title: "Stock Market Indices",
+    content: "Nifty 50 and Sensex track selected groups of Indian stocks.",
+    question: "What does an index track?",
+    options: ["A group of stocks", "Bank account passwords", "Fixed salaries"],
+    answer: 0
+  },
+  {
+    title: "Risk and Diversification",
+    content: "Diversification spreads investments across different assets. It cannot remove all risk.",
+    question: "What is a benefit of diversification?",
+    options: ["Guaranteed profit", "No risk at all", "Reduced concentration risk"],
+    answer: 2
+  },
+  {
+    title: "Long-Term Investing",
+    content: "Stock-market returns are uncertain and losses are possible.",
+    question: "Are stock-market returns guaranteed?",
+    options: ["Always", "No", "Only for beginners"],
+    answer: 1
+  }
+];
+
+
+function openEquitiesLesson() {
+  const oldModal = document.querySelector("#equities-modal");
+  if (oldModal) oldModal.remove();
+
+  state.lessonsCompleted ||= {};
+  state.lessonsCompleted.equities ??= 0;
+  state.quizResults ||= [];
+  state.lastOpenedModule = "equities";
+  saveProgress();
+
+  let current = Math.min(
+    state.lessonsCompleted.equities,
+    equitiesLessons.length - 1
+  );
+
+  const correctThisSession = new Set();
+  const modal = document.createElement("div");
+
+  modal.id = "equities-modal";
+  modal.style.cssText = `
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(2, 6, 23, .75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  `;
+
+  document.body.appendChild(modal);
+
+  function closeModal() {
+    saveProgress();
+    updateXP();
+    updateEquitiesCard();
+    modal.remove();
+  }
+
+  function render() {
+    const lesson = equitiesLessons[current];
+
+    modal.innerHTML = `
+      <section style="
+        background: white;
+        color: #0f172a;
+        width: 100%;
+        max-width: 650px;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 25px;
+        border-radius: 16px;
+        box-sizing: border-box;
+      ">
+        <button type="button" id="eq-close" style="float:right">
+          Close ✕
+        </button>
+
+        <p style="color:#0e7490;font-weight:bold">
+          SPENDWISE ACADEMY · EQUITIES
+        </p>
+
+        <h2>Introduction to Equities &amp; Stock Markets</h2>
+        <p>Lesson ${current + 1} of ${equitiesLessons.length}</p>
+
+        <div style="height:6px;background:#e2e8f0;border-radius:6px">
+          <div style="
+            height:6px;
+            width:${((current + 1) / equitiesLessons.length) * 100}%;
+            background:#0e7490;
+            border-radius:6px;
+          "></div>
+        </div>
+
+        <h3>${lesson.title}</h3>
+        <p>${lesson.content}</p>
+
+        <hr>
+        <h3>Knowledge Check</h3>
+        <p>${lesson.question}</p>
+    
+
+        ${lesson.options.map((option, i) => `
+          <label style="display:block;margin:12px 0">
+            <input type="radio" name="eq-answer" value="${i}">
+            ${option}
+          </label>
+        `).join("")}
+
+        <button type="button" id="eq-check" style="
+          background:#0e7490;color:white;border:0;
+          border-radius:8px;padding:10px 16px;cursor:pointer;
+        ">Check Answer</button>
+
+        <p id="eq-feedback" role="status" aria-live="polite"></p>
+
+        
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;">
+  <button type="button" id="eq-prev"
+    style="padding:10px 16px;border:1px solid #cbd5e1;border-radius:8px;background:#f1f5f9;color:#0f172a;cursor:pointer;">
+    ← Previous Lesson
+  </button>
+
+  <button type="button" id="eq-next"
+    style="background:#0f172a;color:white;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;">
+    ${current === equitiesLessons.length - 1
+      ? "Finish Module"
+      : "Next Lesson →"}
+  </button>
+</div>
+
+      </section>
+    `;
+
+    modal.querySelector("#eq-close").addEventListener(
+      "click",
+      closeModal
+    );
+
+    modal.querySelector("#eq-prev").addEventListener("click", () => {
+    if (current > 0) {
+    current--;
+    render();
+    }
+    });
+
+
+    modal.querySelector("#eq-check").addEventListener("click", () => {
+      const selected = modal.querySelector(
+        'input[name="eq-answer"]:checked'
+      );
+      const feedback = modal.querySelector("#eq-feedback");
+
+      if (!selected) {
+        feedback.textContent = "Please select an answer first.";
+        feedback.style.color = "#b45309";
+        return;
+      }
+
+      const selectedIndex = Number(selected.value);
+      const isCorrect = selectedIndex === lesson.answer;
+
+      state.quizResults.push({
+        moduleId: "equities",
+        lesson: current + 1,
+        question: lesson.question,
+        selectedAnswer: lesson.options[selectedIndex],
+        correct: isCorrect,
+        submittedAt: new Date().toISOString()
+      });
+
+      if (isCorrect) {
+        feedback.textContent = "Correct! Well done.";
+        feedback.style.color = "#047857";
+
+        // Award 20 XP only once per newly completed lesson.
+        if (
+          current >= state.lessonsCompleted.equities &&
+          !correctThisSession.has(current)
+        ) {
+          state.lessonsCompleted.equities = current + 1;
+          state.xp += 20;
+          correctThisSession.add(current);
+        }
+      } else {
+        feedback.textContent = "Incorrect. Review and try again.";
+        feedback.style.color = "#b91c1c";
+      }
+
+      saveProgress();
+      updateXP();
+      updateEquitiesCard();
+    });
+
+    modal.querySelector("#eq-next").addEventListener("click", () => {
+      const completed = current < state.lessonsCompleted.equities;
+
+      if (!completed && !correctThisSession.has(current)) {
+        const feedback = modal.querySelector("#eq-feedback");
+        feedback.textContent = "Answer correctly before continuing.";
+        feedback.style.color = "#b45309";
+        return;
+      }
+
+      if (current < equitiesLessons.length - 1) {
+        current++;
+        render();
+      } else {
+        saveProgress();
+        closeModal();
+      }
+    });
+  }
+
+  modal.addEventListener("click", event => {
+    if (event.target === modal) closeModal();
+  });
+
+  render();
+}
+
+function updateEquitiesCard() {
+  const card = document.querySelector(".node-5-equities-node");
+  if (!card) return;
+
+  const completed = Math.min(
+    Number(state.lessonsCompleted.equities) || 0,
+    equitiesLessons.length
+  );
+
+  let progress = card.querySelector(".equities-progress");
+
+  if (!progress) {
+    progress = document.createElement("p");
+    progress.className = "equities-progress";
+    progress.style.cssText =
+      "font-size:13px;color:#64748b;margin:8px 12px;";
+    card.appendChild(progress);
+  }
+
+  progress.textContent =
+    `${completed} of ${equitiesLessons.length} lessons completed`;
+
+  const button = card.querySelector(".equities-start-button");
+
+  if (button) {
+    button.textContent =
+      completed === equitiesLessons.length ? "Review" :
+      completed > 0 ? "Continue Learning" : "Start Learning";
+  }
+}
+
+
+function addEquitiesButton() {
+  const card = document.querySelector(".node-5-equities-node");
+  if (!card || card.querySelector(".equities-start-button")) return;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "equities-start-button";
+  button.textContent = "Start Learning";
+  button.style.cssText =
+    "background:#0e7490;color:white;border:0;border-radius:8px;" +
+    "padding:10px 16px;cursor:pointer;margin:12px;";
+
+  button.addEventListener("click", openEquitiesLesson);
+  card.appendChild(button);
+}
+
   function init() {
     addProgressButtons();
     updateXP();
     updateTaxationCard();
+    addEquitiesButton();
+    updateEquitiesCard();
 
     const resumeButton = document.querySelector(".button-748");
 
