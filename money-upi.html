@@ -34,7 +34,7 @@
 </div>
 </div>
 </a>
-<a href="money-upi.html" class="prototype-link">
+<a href="money-management.html" class="prototype-link">
 <div class="link-818">
 <div class="svg-819">
 <img src="images/vector-820.svg" class="vector-820" alt="vector" />
@@ -251,7 +251,59 @@
 </div>
 </div>
 </div>
-</div>
+ </div>
+ </div>
+ </div>
+<section class="sip-calculator" aria-labelledby="sip-calculator-title">
+  <div class="sip-heading">
+    <p class="sip-eyebrow">PLAN YOUR INVESTMENTS</p>
+    <h2 id="sip-calculator-title">SIP Calculator</h2>
+    <p class="sip-description">See how regular monthly investments could grow over time.</p>
+  </div>
+
+  <div class="sip-fields">
+    <div class="sip-field">
+      <label for="sip-monthly-investment">Monthly investment</label>
+      <div class="sip-input-wrap">
+        <span aria-hidden="true">₹</span>
+        <input id="sip-monthly-investment" type="number" min="500" max="10000000" step="500" value="5000" inputmode="numeric" required>
+      </div>
+      <small>₹500 – ₹1,00,00,000</small>
+    </div>
+    <div class="sip-field">
+      <label for="sip-annual-return">Expected annual return</label>
+      <div class="sip-input-wrap">
+        <input id="sip-annual-return" type="number" min="0" max="30" step="0.1" value="12" inputmode="decimal" required>
+        <span aria-hidden="true">%</span>
+      </div>
+      <small>0% – 30%</small>
+    </div>
+    <div class="sip-field">
+      <label for="sip-duration">Investment duration</label>
+      <div class="sip-input-wrap">
+        <input id="sip-duration" type="number" min="1" max="50" step="1" value="10" inputmode="numeric" required>
+        <span>years</span>
+      </div>
+      <small>1 – 50 years</small>
+    </div>
+  </div>
+
+  <p class="sip-error" role="alert" hidden>Enter values within the ranges shown above.</p>
+
+  <div class="sip-results" aria-live="polite">
+    <p class="sip-result-label">Estimated future value</p>
+    <p class="sip-result-value" id="sip-future-value">₹11,61,695</p>
+    <div class="sip-result-row">
+      <span>Amount invested</span>
+      <strong id="sip-invested-amount">₹6,00,000</strong>
+    </div>
+    <div class="sip-result-row sip-gains-row">
+      <span>Estimated returns</span>
+      <strong id="sip-estimated-returns">₹5,61,695</strong>
+    </div>
+  </div>
+  <p class="sip-disclaimer">Illustration only. Actual returns vary with market performance.</p>
+</section>
 </div>
 <script>
   const searchInput = document.querySelector('.instrument-search');
@@ -283,6 +335,56 @@
       holding.element.style.display = matches ? '' : 'none';
     });
   });
+
+  const sipInputs = [
+    document.querySelector('#sip-monthly-investment'),
+    document.querySelector('#sip-annual-return'),
+    document.querySelector('#sip-duration')
+  ];
+  const sipError = document.querySelector('.sip-error');
+  const futureValueOutput = document.querySelector('#sip-future-value');
+  const investedAmountOutput = document.querySelector('#sip-invested-amount');
+  const estimatedReturnsOutput = document.querySelector('#sip-estimated-returns');
+  const inrFormatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0
+  });
+
+  function calculateSip() {
+    const values = sipInputs.map(function (input) {
+      return input.valueAsNumber;
+    });
+    const isValid = sipInputs.every(function (input, index) {
+      return input.validity.valid && Number.isFinite(values[index]);
+    });
+
+    sipError.hidden = isValid;
+    if (!isValid) {
+      futureValueOutput.textContent = '—';
+      investedAmountOutput.textContent = '—';
+      estimatedReturnsOutput.textContent = '—';
+      return;
+    }
+
+    const monthlyInvestment = values[0];
+    const monthlyRate = values[1] / 100 / 12;
+    const months = values[2] * 12;
+    const investedAmount = monthlyInvestment * months;
+    const futureValue = monthlyRate === 0
+      ? investedAmount
+      : monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+    const estimatedReturns = futureValue - investedAmount;
+
+    futureValueOutput.textContent = inrFormatter.format(futureValue);
+    investedAmountOutput.textContent = inrFormatter.format(investedAmount);
+    estimatedReturnsOutput.textContent = inrFormatter.format(estimatedReturns);
+  }
+
+  sipInputs.forEach(function (input) {
+    input.addEventListener('input', calculateSip);
+  });
+  calculateSip();
 </script>
 </body>
 </html>

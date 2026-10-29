@@ -12491,6 +12491,171 @@ a.prototype-link {
     line-height: 40px;
   }
 }
+
+.sip-calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  color: var(--text-rgb-15-23-42);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.12);
+}
+
+.sip-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sip-eyebrow,
+.sip-result-label {
+  color: var(--text-rgb-100-116-139);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sip-heading h2 {
+  color: var(--text-rgb-2-6-23);
+  font-family: var(--font-family-arapey);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.sip-description,
+.sip-disclaimer {
+  color: var(--text-rgb-100-116-139);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.sip-fields {
+  display: grid;
+  gap: 14px;
+}
+
+.sip-field {
+  display: grid;
+  gap: 6px;
+}
+
+.sip-field label {
+  color: var(--text-rgb-30-41-59);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sip-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px;
+  color: var(--text-rgb-100-116-139);
+  background: rgba(248, 250, 252, 1);
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  border-radius: 10px;
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 13px;
+}
+
+.sip-input-wrap:focus-within {
+  border-color: rgba(8, 145, 178, 0.8);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.sip-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  color: var(--text-rgb-15-23-42);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+}
+
+.sip-input-wrap input:focus-visible {
+  outline: 0;
+}
+
+.sip-field small {
+  color: var(--text-rgb-100-116-139);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 10px;
+}
+
+.sip-results {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(240, 249, 250, 0.9);
+  border: 1px solid rgba(8, 145, 178, 0.16);
+  border-radius: 16px;
+}
+
+.sip-result-value {
+  color: var(--text-rgb-2-6-23);
+  font-family: var(--font-family-arapey);
+  font-size: clamp(26px, 2.2vw, 34px);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.sip-result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  color: var(--text-rgb-100-116-139);
+  border-top: 1px solid rgba(203, 213, 225, 0.6);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 11px;
+}
+
+.sip-result-row strong {
+  color: var(--text-rgb-30-41-59);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sip-gains-row strong {
+  color: var(--text-rgb-5-150-105);
+}
+
+.sip-error {
+  margin: -8px 0;
+  color: rgba(190, 18, 60, 1);
+  font-family: var(--font-family-plus-jakarta-sans);
+  font-size: 11px;
+}
+
+.sip-disclaimer {
+  font-size: 10px;
+}
+
+@media (max-width: 1100px) {
+  .sip-calculator {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sip-calculator {
+    padding: 20px;
+  }
+}
   flex-grow: 0;
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
