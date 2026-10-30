@@ -128,7 +128,8 @@
     location.reload();
   }
 
-  function addProgressButtons() {
+  
+function addProgressButtons() {
     if (document.querySelector(".academy-tools")) return;
 
     const body = document.querySelector(".body-700");
@@ -136,28 +137,149 @@
 
     const toolbar = document.createElement("section");
     toolbar.className = "academy-tools";
+
     toolbar.style.cssText = `
       display:flex;
       align-items:center;
-      justify-content:flex-start;
+      justify-content:space-between;
       flex-wrap:wrap;
-      gap:10px;
+      gap:18px;
       margin:12px 24px;
-      padding:12px 16px;
-      background:#fff;
+      padding:18px 22px;
+      background:linear-gradient(135deg, #ffffff, #f8fafc);
       border:1px solid #e2e8f0;
-      border-radius:12px;
+      border-radius:16px;
+      box-shadow:0 4px 16px rgba(15, 23, 42, 0.05);
       font-family:Arial,sans-serif;
+      box-sizing:border-box;
     `;
 
     toolbar.innerHTML = `
-      <p><strong>Your learning workspace</strong></p>
-      <button type="button" id="academy-export">
-        Export progress JSON
-      </button>
-      <button type="button" id="academy-reset">
-        Reset demo progress
-      </button>
+      <style>
+        .academy-tools .workspace-heading {
+          display:flex;
+          align-items:center;
+          gap:12px;
+          min-width:180px;
+        }
+
+        .academy-tools .workspace-icon {
+          width:42px;
+          height:42px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          border-radius:12px;
+          background:#eef4fa;
+          color:#14243b;
+          font-size:20px;
+          flex-shrink:0;
+        }
+
+        .academy-tools .workspace-title {
+          margin:0;
+          color:#14243b;
+          font-size:15px;
+          font-weight:700;
+        }
+
+        .academy-tools .workspace-subtitle {
+          margin:5px 0 0;
+          color:#8492a6;
+          font-size:12px;
+        }
+
+        .academy-tools .workspace-actions {
+          display:flex;
+          align-items:center;
+          flex-wrap:wrap;
+          gap:10px;
+        }
+
+        .academy-tools .workspace-btn {
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:8px;
+          padding:11px 16px;
+          border-radius:10px;
+          font-size:13px;
+          font-weight:600;
+          cursor:pointer;
+          transition:all 0.2s ease;
+        }
+
+        .academy-tools .export-btn {
+          background:#14243b;
+          color:#fff;
+          border:1px solid #14243b;
+          box-shadow:0 3px 8px rgba(20,36,59,0.15);
+        }
+
+        .academy-tools .export-btn:hover {
+          background:#203b5d;
+          transform:translateY(-2px);
+          box-shadow:0 5px 12px rgba(20,36,59,0.2);
+        }
+
+        .academy-tools .reset-btn {
+          background:#fff;
+          color:#475569;
+          border:1px solid #d8e0e9;
+        }
+
+        .academy-tools .reset-btn:hover {
+          background:#f1f5f9;
+          border-color:#94a3b8;
+          transform:translateY(-2px);
+        }
+
+        .academy-tools .workspace-btn:focus-visible {
+          outline:3px solid #38bdf8;
+          outline-offset:3px;
+        }
+
+        @media (max-width:600px) {
+          .academy-tools {
+            align-items:stretch !important;
+            margin:12px !important;
+          }
+
+          .academy-tools .workspace-actions {
+            width:100%;
+          }
+
+          .academy-tools .workspace-btn {
+            flex:1;
+          }
+        }
+      </style>
+
+      <div class="workspace-heading">
+        <div class="workspace-icon">▤</div>
+        <div>
+          <p class="workspace-title">Your Learning Workspace</p>
+          <p class="workspace-subtitle">
+            Manage and back up your learning progress
+          </p>
+        </div>
+      </div>
+
+      <div class="workspace-actions">
+        <button type="button"
+          id="academy-export"
+          class="workspace-btn export-btn">
+          <span>↓</span>
+          Export Progress
+        </button>
+
+        <button type="button"
+          id="academy-reset"
+          class="workspace-btn reset-btn">
+          <span>↻</span>
+          Reset Demo Progress
+        </button>
+      </div>
     `;
 
     body.parentElement.insertBefore(toolbar, body);
@@ -167,7 +289,8 @@
 
     toolbar.querySelector("#academy-reset")
       .addEventListener("click", resetProgress);
-  }
+}
+
 
   const lessons = [
     {
