@@ -141,18 +141,13 @@ body {
 img {
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
-/* Prototype Links - Navigation */
+/* Prototype Links */
 a.prototype-link {
   text-decoration: none;
   color: inherit;
   display: contents;
-}
-a.prototype-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
 }
 
 .background-shadow-8 {
@@ -221,6 +216,7 @@ a.prototype-link:focus-visible {
 .text-12 {
   flex-grow: 0;
   flex-shrink: 1;
+  flex-basis: auto;
   text-align: left;
   font-family: var(--font-family-arapey);
   font-weight: normal;
@@ -228,8 +224,7 @@ a.prototype-link:focus-visible {
   line-height: 72px;
   text-decoration: none;
   text-transform: none;
-  color: var(--text-rgb-51-65-85);
-
+  color: var(--text-rgb-2-6-23);
   font-family: var(--font-family-arapey);
   font-weight: normal;
   font-size: 72px;
@@ -260,6 +255,7 @@ a.prototype-link:focus-visible {
   font-size: 18px;
   line-height: 29.25px;
   text-decoration: none;
+  text-transform: none;
   color: var(--text-rgb-71-85-105);
 }
 
@@ -12297,4 +12293,762 @@ a.prototype-link:focus-visible {
   flex-grow: 0;
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
+}
+
+
+#transactionSearch {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #0f172a;
+    font: inherit;
+}
+
+#transactionSearch::placeholder {
+    color: #94a3b8;
+}
+
+/* =================================
+   SPENDWISE - FINAL LAYOUT IMPROVEMENTS
+   ================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Main dashboard and right-side card layout */
+.container-309 {
+    width: 100%;
+    max-width: 100%;
+    gap: 24px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.left-column-8-cols-310 {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+}
+
+/* Platinum Card column */
+.node-422 {
+    flex: 0 0 240px;
+    width: 240px;
+    min-width: 0;
+    max-width: 100%;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+.node-425,
+.privileges-447 {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Keep card images inside their containers */
+.node-425 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Prevent long text from stretching cards */
+.left-column-8-cols-310,
+.node-422,
+.node-425,
+.privileges-447 {
+    overflow-wrap: break-word;
+}
+
+/* Tablet and smaller laptop screens */
+@media screen and (max-width: 1100px) {
+    .container-309 {
+        flex-wrap: wrap;
+    }
+
+    .left-column-8-cols-310 {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .node-422 {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 600px) {
+    .container-309 {
+        gap: 16px;
+    }
+
+    .left-column-8-cols-310,
+    .node-422 {
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+
+/* FINAL LAYOUT RESET */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Sidebar and main panel */
+.node-243 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  min-height: 100vh;
+  padding: 0 !important;
+}
+
+.node-244 {
+  flex: 0 0 280px !important;
+  width: 280px !important;
+  min-width: 240px;
+  min-height: 100vh;
+  gap: 0 !important;
+  padding: 24px 18px !important;
+}
+
+.main-content-area-288 {
+  flex: 1 1 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  align-items: stretch !important;
+}
+
+/* Header */
+.header-289 {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+  padding: 16px 24px !important;
+}
+
+.container-290 {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.container-295 {
+  display: flex !important;
+  flex: 0 1 auto;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  min-width: 0;
+}
+
+.container-296 {
+  width: clamp(170px, 22vw, 280px) !important;
+  min-width: 0;
+}
+
+.input-297 {
+  width: 100% !important;
+}
+
+.node-303 {
+  flex-shrink: 0 !important;
+}
+
+/* Main dashboard area */
+.main-body-308 {
+  width: 100% !important;
+  padding: 28px 24px !important;
+  align-items: stretch !important;
+}
+
+.container-309 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+  width: 100% !important;
+  max-width: 1400px;
+}
+
+.left-column-8-cols-310 {
+  flex: 1 1 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+}
+
+/* Metric cards */
+.metrics-row-311 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.background-border-312,
+.background-border-317,
+.background-border-322 {
+  min-width: 0;
+  width: 100% !important;
+}
+
+/* Outflow cards */
+.container-334 {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.background-border-335,
+.background-border-342,
+.background-border-349,
+.background-border-356 {
+  min-width: 0;
+  width: 100% !important;
+}
+
+/* Transaction rows */
+.container-385 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.background-border-386,
+.background-border-398,
+.background-border-410 {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+  width: 100% !important;
+  min-width: 0;
+  padding: 20px 24px !important;
+}
+
+.container-388,
+.container-400,
+.container-412 {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+  min-width: 0;
+}
+
+.container-391,
+.container-403,
+.container-415 {
+  flex: 1 1 auto !important;
+  min-width: 0;
+}
+
+.container-396,
+.container-408,
+.container-420 {
+  flex: 0 0 auto !important;
+  margin-left: auto !important;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Smaller screens */
+@media (max-width: 1100px) {
+  .node-244 {
+    flex-basis: 220px !important;
+    width: 220px !important;
+    min-width: 200px;
+  }
+
+  .main-body-308 {
+    padding: 20px 16px !important;
+  }
+
+  .container-309 {
+    flex-direction: column !important;
+  }
+
+  .left-column-8-cols-310 {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .node-244 {
+    flex-basis: 76px !important;
+    width: 76px !important;
+    min-width: 76px;
+    padding: 16px 8px !important;
+  }
+
+  .metrics-row-311 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .container-334 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .header-289 {
+    padding: 14px !important;
+  }
+
+  .background-border-386,
+  .background-border-398,
+  .background-border-410 {
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+}
+
+/* FINAL SPACING FIX — MONEY MANAGEMENT */
+.main-body-308 {
+  width: 100% !important;
+  padding: 28px 24px !important;
+}
+
+.container-309 {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 250px !important;
+  align-items: start !important;
+  gap: 24px !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.left-column-8-cols-310 {
+  width: 100% !important;
+  min-width: 0 !important;
+  align-items: stretch !important;
+  gap: 24px !important;
+}
+
+.left-column-8-cols-310 > * {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Use the full left-column width */
+.metrics-row-311 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.container-334 {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  width: 100% !important;
+}
+
+.container-385 {
+  width: 100% !important;
+  align-items: stretch !important;
+}
+
+.background-border-386,
+.background-border-398,
+.background-border-410 {
+  width: 100% !important;
+  gap: 20px !important;
+}
+
+/* Keep the right-side card panel compact */
+.container-309 > :last-child {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+/* Prevent content from becoming cramped */
+@media (max-width: 1100px) {
+  .container-309 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .container-309 > :last-child {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .main-body-308 {
+    padding: 16px 12px !important;
+  }
+
+  .metrics-row-311 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .container-334 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* FINAL ALIGNMENT FIX */
+
+/* Remove the extra search icon/circle below the search bar */
+.svg-300 {
+  display: none !important;
+}
+
+/* Keep search bar and profile neatly aligned */
+.container-295 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 16px !important;
+  flex-wrap: nowrap !important;
+}
+
+.input-297 {
+  flex-shrink: 1 !important;
+  min-width: 180px !important;
+}
+
+/* Keep section headings and their pills on one straight line */
+.node-328 > .container-329,
+.node-363 > .container-365,
+.node-378 > .container-379 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Prevent the pills from breaking into multiple lines */
+.node-332,
+.node-368,
+.node-382 {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
+/* Keep transaction rows evenly sized */
+.container-385 {
+  width: 100% !important;
+}
+
+.background-border-386,
+.background-border-398,
+.background-border-410 {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Prevent cramped layout on smaller screens */
+@media (max-width: 900px) {
+  .node-328 > .container-329,
+  .node-363 > .container-365,
+  .node-378 > .container-379 {
+    gap: 10px !important;
+  }
+
+  .node-332,
+  .node-368,
+  .node-382 {
+    font-size: 12px !important;
+  }
+}
+
+/* FINAL FIX: align section headings and badges in straight lines */
+
+.node-243,
+.background-border-312 {
+    box-sizing: border-box;
+}
+
+/* Keep section heading and badge on one horizontal line */
+h2:has(+ .upcoming-badge),
+h2:has(+ .sync-badge) {
+    margin: 0;
+}
+
+/* Prevent badge text from wrapping */
+[class*="upcoming"],
+[class*="sync"] {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Transaction section heading and sync badge */
+.reconciled-upi-header,
+.immediate-outflows-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Keep the transaction amounts aligned */
+.transaction-row {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.transaction-row .amount {
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .reconciled-upi-header,
+    .immediate-outflows-header {
+        gap: 10px;
+    }
+
+    .transaction-row {
+        grid-template-columns: 48px minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+}
+
+/* Add Transaction modal */
+#transaction-modal {
+    font-family: inherit;
+}
+
+#transaction-modal .transaction-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.52);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    animation: transactionFadeIn 0.2s ease;
+}
+
+#transaction-modal .transaction-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 34px;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+    animation: transactionSlideUp 0.25s ease;
+}
+
+#transaction-modal .transaction-close {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 11px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#transaction-modal .transaction-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+    color: #0f766e;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+#transaction-modal .transaction-eyebrow {
+    margin: 0 0 9px;
+    color: #0d9488;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+#transaction-modal h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+#transaction-modal .transaction-subtitle {
+    margin: 9px 0 27px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#transaction-modal label {
+    display: block;
+    margin: 19px 0 9px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#transaction-modal input {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 14px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    font: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+#transaction-modal input:focus {
+    border-color: #14b8a6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+
+#transaction-modal input::placeholder {
+    color: #94a3b8;
+}
+
+#transaction-modal .amount-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: #0f766e;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#transaction-modal .amount-input-wrap:focus-within {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+    background: #ffffff;
+}
+
+#transaction-modal .amount-input-wrap input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+#transaction-modal .transaction-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+#transaction-modal .transaction-form-actions button {
+    min-height: 46px;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#transaction-modal .transaction-cancel {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #475569;
+}
+
+#transaction-modal .transaction-save {
+    flex: 1.5;
+    border: none;
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    color: #ffffff;
+    box-shadow: 0 5px 14px rgba(13, 148, 136, 0.2);
+}
+
+#transaction-modal .transaction-form-actions button:hover {
+    transform: translateY(-2px);
+}
+
+#transaction-modal .transaction-save:hover {
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
+}
+
+@keyframes transactionFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes transactionSlideUp {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+    #transaction-modal .transaction-modal-card {
+        padding: 26px 21px;
+        border-radius: 20px;
+    }
+
+    #transaction-modal h2 {
+        font-size: 22px;
+    }
 }
