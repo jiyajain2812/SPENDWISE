@@ -84,7 +84,7 @@
 .text-rgb-14-116-144 {
   color: var(--text-rgb-14-116-144);
 }
-
+   
 .text-rgb-203-213-225 {
   color: var(--text-rgb-203-213-225);
 }
@@ -12308,5 +12308,967 @@ a.prototype-link {
   .header-681 {
     padding: 12px 16px;
     gap: 12px;
+  }
+}
+
+/* ===== SpendWise Expense Manager ===== */
+
+.expense-manager {
+  width: 100%;
+  margin-top: 32px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-sizing: border-box;
+  color: #1f2937;
+  font-family: inherit;
+}
+
+.expense-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.expense-eyebrow {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.expense-heading h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.expense-subtitle {
+  margin: 8px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.expense-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.expense-field label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.expense-field input,
+.expense-field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.expense-field input:focus,
+.expense-field select:focus {
+  outline: 2px solid #c7d2fe;
+  border-color: #6366f1;
+}
+
+.expense-submit {
+  min-height: 46px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #4338ca;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: end;
+  transition: background 0.2s ease;
+}
+
+.expense-submit:hover {
+  background: #3730a3;
+}
+
+.expense-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.expense-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 13px;
+}
+
+.expense-message:empty {
+  display: none;
+}
+
+.expense-message.success {
+  color: #15803d;
+}
+
+.expense-message.error {
+  color: #b91c1c;
+}
+
+.expense-message.info {
+  color: #4338ca;
+}
+
+.expense-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.expense-list-heading h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.expense-list-heading span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.expense-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 17px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.expense-details {
+  min-width: 0;
+}
+
+.expense-details h4 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.expense-details p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.expense-amount {
+  flex-shrink: 0;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.expense-empty {
+  padding: 20px 0;
+  color: #6b7280;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive layout */
+@media (max-width: 640px) {
+  .expense-manager {
+    padding: 18px;
+    margin-top: 22px;
+  }
+
+  .expense-heading h2 {
+    font-size: 21px;
+  }
+
+  .expense-form {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .expense-submit {
+    width: 100%;
+  }
+
+  .expense-list-heading {
+    align-items: flex-start;
+  }
+}
+
+/* Expense manager layout fix */
+.expense-manager {
+  width: 100%;
+  min-width: 0;
+  padding: 24px 20px;
+  overflow-wrap: break-word;
+}
+
+.expense-heading h2 {
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.expense-form {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px 12px;
+}
+
+.expense-field {
+  min-width: 0;
+}
+
+.expense-field label {
+  overflow-wrap: anywhere;
+}
+
+.expense-field input,
+.expense-field select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.expense-submit {
+  width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 12px 8px;
+  line-height: 1.4;
+}
+
+.expense-list-heading {
+  flex-wrap: wrap;
+}
+
+.expense-item {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .expense-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .expense-manager {
+    padding: 18px 14px;
+  }
+}
+
+/* ===== Make Expense Manager Bigger ===== */
+
+.expense-manager {
+  width: 100%;
+  min-width: 0;
+  padding: 32px;
+  margin-top: 32px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+/* Make the heading more prominent */
+.expense-heading h2 {
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.expense-eyebrow {
+  font-size: 12px;
+}
+
+.expense-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Give form fields more room */
+.expense-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.expense-field {
+  gap: 10px;
+}
+
+.expense-field label {
+  font-size: 14px;
+}
+
+.expense-field input,
+.expense-field select {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+/* Make Add Expense button larger */
+.expense-submit {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+/* More space for recent expenses */
+.expense-list-heading {
+  margin-top: 36px;
+  padding-bottom: 18px;
+}
+
+.expense-list-heading h3 {
+  font-size: 20px;
+}
+
+.expense-item {
+  padding: 20px 0;
+}
+
+.expense-details h4,
+.expense-amount {
+  font-size: 15px;
+}
+
+.expense-details p {
+  font-size: 13px;
+}
+
+/* Keep it usable on smaller screens */
+@media (max-width: 640px) {
+  .expense-manager {
+    padding: 22px 18px;
+  }
+
+  .expense-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FIX: Expense Manager Full-Width Card ===== */
+
+.expense-manager {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 32px 0;
+  padding: 32px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  overflow: visible;
+}
+
+/* Clear, readable heading */
+.expense-heading {
+  display: block;
+  margin-bottom: 28px;
+}
+
+.expense-heading h2 {
+  font-size: 28px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.expense-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Two balanced columns for the form */
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 24px;
+  width: 100%;
+}
+
+.expense-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.expense-field label {
+  font-size: 14px;
+  overflow-wrap: normal;
+}
+
+.expense-field input,
+.expense-field select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Button must never break into vertical letters */
+.expense-submit {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 18px;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  writing-mode: horizontal-tb;
+  font-size: 15px;
+  line-height: 1.4;
+  border-radius: 10px;
+}
+
+/* Recent expenses section */
+.expense-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  padding-bottom: 16px;
+}
+
+.expense-list-heading h3 {
+  font-size: 20px;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.expense-details h4,
+.expense-amount {
+  font-size: 15px;
+}
+
+.expense-details p {
+  font-size: 13px;
+}
+
+/* Keep the card usable on smaller screens */
+@media (max-width: 700px) {
+  .expense-manager {
+    padding: 22px 18px;
+  }
+
+  .expense-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .expense-heading h2 {
+    font-size: 24px;
+  }
+}
+
+/* FIX: Make Manage Expenses full-width */
+.body-content-534 > .expense-manager {
+  display: block;
+  grid-column: 1 / -1;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 32px 0;
+}
+
+/* Keep each form label on one line */
+.expense-manager .expense-field {
+  min-width: 0;
+}
+
+.expense-manager .expense-field label {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Give inputs enough room */
+.expense-manager .expense-form {
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.expense-manager .expense-field input,
+.expense-manager .expense-field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+/* Prevent the box from becoming too narrow on smaller screens */
+@media (max-width: 600px) {
+  .expense-manager .expense-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* SpendWise: balance dashboard and expense panel */
+
+@media (min-width: 761px) {
+  .body-content-534 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Make the long dashboard area narrower */
+  .body-content-534 > .main-dashboard-view-511 {
+    flex: 0 1 54% !important;
+    width: 54% !important;
+    max-width: 54% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* Give Manage Expenses the recovered space */
+  .body-content-534 > .expense-manager {
+    flex: 1 1 46% !important;
+    width: 46% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 20px 0 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* Keep form controls inside the wider panel */
+  .expense-manager .expense-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    min-width: 0;
+  }
+
+  .expense-manager .expense-field {
+    min-width: 0;
+  }
+
+  .expense-manager .expense-field label {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .expense-manager .expense-field input,
+  .expense-manager .expense-field select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+/* ===== SpendWise: Expense Manager Layout Fix ===== */
+
+.expense-manager {
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  max-width: 1400px;
+  margin: 28px auto 40px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.07);
+}
+
+.expense-manager *,
+.expense-manager *::before,
+.expense-manager *::after {
+  box-sizing: border-box;
+}
+
+.expense-heading {
+  margin-bottom: 24px;
+}
+
+.expense-heading h2 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.expense-eyebrow {
+  margin: 0 0 8px;
+  color: #0891b2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.expense-subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.expense-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.expense-field label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.expense-field input,
+.expense-field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #0f172a;
+  font: inherit;
+  outline: none;
+}
+
+.expense-field input:focus,
+.expense-field select:focus {
+  border-color: #0891b2;
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.expense-form button,
+.expense-manager button[type="submit"] {
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #0f766e;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.expense-form button:hover,
+.expense-manager button[type="submit"]:hover {
+  background: #115e59;
+}
+
+@media (max-width: 700px) {
+  .expense-manager {
+    width: calc(100% - 24px);
+    margin: 20px auto;
+    padding: 18px;
+  }
+
+  .expense-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expense-heading h2 {
+    font-size: 22px;
+  }
+}
+/* Keep all expense fields in one row */
+.expense-manager {
+  width: calc(100% - 32px);
+  max-width: none;
+  margin: 24px 16px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.5fr) minmax(120px, 1fr)
+                         minmax(150px, 1fr) minmax(140px, 1fr)
+                         auto;
+  align-items: end;
+  gap: 14px;
+  width: 100%;
+}
+
+.expense-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.expense-field input,
+.expense-field select {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.expense-submit {
+  height: 44px;
+  white-space: nowrap;
+  padding: 0 16px;
+}
+
+.expense-message {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+@media (max-width: 900px)
+ {
+  .expense-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expense-submit {
+    width: 100%;
+  }
+}
+
+/* ===== SpendWise Dashboard Layout Fix ===== */
+
+/* 1. Make the left sidebar narrower */
+.aside-sidebar-465 {
+  flex: 0 0 280px;
+  width: 280px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 32px;
+}
+
+/* 2. Let the main dashboard use the remaining space */
+.main-dashboard-view-511 {
+  flex: 1 1 0;
+  width: calc(100% - 280px);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Give the dashboard content a proper two-column layout */
+.body-content-534 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 320px);
+  align-items: start;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px 28px;
+  box-sizing: border-box;
+}
+
+/* 4. Keep the portfolio cards inside the left column */
+.body-content-534 > .node-535 {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* 5. Make Transaction Tracker wider */
+.body-content-534 > .expense-manager {
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+/* 6. Keep the expense heading readable */
+.expense-heading {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.expense-heading h2 {
+  font-size: 26px;
+  line-height: 1.3;
+  overflow-wrap: normal;
+}
+
+.expense-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 7. Arrange the input fields neatly */
+.expense-manager .expense-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.expense-manager .expense-field {
+  width: 100%;
+  min-width: 0;
+  gap: 8px;
+}
+
+.expense-manager .expense-field label {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.expense-manager .expense-field input,
+.expense-manager .expense-field select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* 8. Make the Add Expense button full-width */
+.expense-manager .expense-submit {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  writing-mode: horizontal-tb;
+  box-sizing: border-box;
+}
+
+/* 9. Improve the Recent Expenses section */
+.expense-manager .expense-list-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding-bottom: 14px;
+}
+
+.expense-manager .expense-item {
+  gap: 12px;
+  padding: 16px 0;
+  min-width: 0;
+}
+
+/* 10. Adapt the layout for tablets and smaller screens */
+@media (max-width: 1050px) {
+  .body-content-534 {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .aside-sidebar-465 {
+    flex-basis: 240px;
+    width: 240px;
+    padding: 16px;
+  }
+
+  .main-dashboard-view-511 {
+    width: calc(100% - 240px);
+  }
+}
+
+/* 11. Stack everything on mobile */
+@media (max-width: 760px) {
+  .spendwise-dashboard-464 {
+    flex-direction: column;
+  }
+
+  .aside-sidebar-465 {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: auto;
+    gap: 24px;
+  }
+
+  .main-dashboard-view-511 {
+    width: 100%;
+  }
+
+  .body-content-534 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 20px 16px;
+  }
+
+  .body-content-534 > .expense-manager {
+    margin: 0;
+    padding: 22px 18px;
   }
 }

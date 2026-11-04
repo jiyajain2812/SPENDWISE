@@ -1,0 +1,25 @@
+{
+  "expenses": [
+    {
+      "id": "1793275792116",
+      "title": "kite",
+      "amount": 44,
+      "category": "Travel",
+      "date": "2026-06-05"
+    },
+    {
+      "id": "1793275815980",
+      "title": "burger",
+      "amount": 60,
+      "category": "Food",
+      "date": "2026-10-23"
+    },
+    {
+      "id": "1793279105527",
+      "title": "king",
+      "amount": 8089.99,
+      "category": "Food",
+      "date": "2026-10-23"
+    }
+  ]
+}
