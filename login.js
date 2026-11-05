@@ -10,6 +10,7 @@ const togglePassword = document.getElementById("togglePassword");
 const loginMessage = document.getElementById("loginMessage");
 const rememberMe = document.getElementById("rememberMe");
 
+
 // ===============================
 // SHOW / HIDE PASSWORD
 // ===============================
@@ -17,15 +18,11 @@ const rememberMe = document.getElementById("rememberMe");
 togglePassword.addEventListener("click", function () {
 
     if (passwordInput.type === "password") {
-
         passwordInput.type = "text";
         togglePassword.textContent = "Hide";
-
     } else {
-
         passwordInput.type = "password";
         togglePassword.textContent = "Show";
-
     }
 
 });
@@ -37,7 +34,7 @@ togglePassword.addEventListener("click", function () {
 
 loginForm.addEventListener("submit", function (event) {
 
-    // Stop the browser from refreshing the page
+    // Prevent page refresh
     event.preventDefault();
 
     const email = emailInput.value.trim();
@@ -53,54 +50,72 @@ loginForm.addEventListener("submit", function (event) {
     // ===============================
 
     if (email === "") {
-
         showError("Please enter your UPI ID or email.");
         emailInput.focus();
         return;
-
     }
 
-
     if (password === "") {
-
         showError("Please enter your password.");
         passwordInput.focus();
         return;
-
     }
 
-
     if (password.length < 6) {
-
         showError("Password must contain at least 6 characters.");
         passwordInput.focus();
         return;
-
     }
 
 
     // ===============================
-    // SUCCESS
+    // REMEMBER UPI ID / EMAIL
     // ===============================
 
-    // Save login submission as JSON in localStorage
-const loginData = {
-    email: email,
-    submittedAt: new Date().toISOString(),
-    loginSuccessful: true
-};
+    if (rememberMe.checked) {
+        localStorage.setItem("spendwiseEmail", email);
+    } else {
+        localStorage.removeItem("spendwiseEmail");
+    }
 
-localStorage.setItem("spendwiseLoginData", JSON.stringify(loginData));
 
-saveLoginData(email, password);
+    // ===============================
+    // SAVE LOGIN DATA TO LOCAL STORAGE
+    // ===============================
 
-showSuccess("Login successful! Redirecting...");
+    const loginData = {
+        email: email,
+        submittedAt: new Date().toISOString(),
+        loginSuccessful: true
+    };
 
-setTimeout(function () {
+    localStorage.setItem(
+        "spendwiseLoginData",
+        JSON.stringify(loginData)
+    );
 
-    window.location.href = "dashboard.html";
 
-}, 1000);
+    // ===============================
+    // SAVE LOGIN DATA AS JSON FILE
+    // ===============================
+
+    saveLoginData(email);
+
+
+    // ===============================
+    // SUCCESS MESSAGE
+    // ===============================
+
+    showSuccess("Login successful! Redirecting...");
+
+
+    // ===============================
+    // REDIRECT TO DASHBOARD
+    // ===============================
+
+    setTimeout(function () {
+        window.location.href = "dashboard.html";
+    }, 1000);
 
 });
 
@@ -123,16 +138,18 @@ function showSuccess(message) {
     loginMessage.className = "login-message success";
 
 }
+
+
 // ===============================
 // SAVE LOGIN DATA AS JSON
 // ===============================
 
-function saveLoginData(email, password) {
+function saveLoginData(email) {
 
     const loginData = {
         email: email,
-        password: password,
-        loginTime: new Date().toLocaleString()
+        submittedAt: new Date().toISOString(),
+        loginSuccessful: true
     };
 
     const jsonData = JSON.stringify(loginData, null, 4);
@@ -149,7 +166,10 @@ function saveLoginData(email, password) {
     downloadLink.click();
 
     URL.revokeObjectURL(downloadLink.href);
+
 }
+
+
 // ===============================
 // REMEMBER LOGIN
 // ===============================
