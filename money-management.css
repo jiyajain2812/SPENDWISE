@@ -12294,3 +12294,162 @@ a.prototype-link {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 1);
 }
+
+.entry-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 24px;
+  color: #0f172a;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  font-family: var(--font-family-plus-jakarta-sans);
+}
+
+.entry-manager-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.entry-manager-header h2 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.entry-manager-header p,
+.saved-entry-details p,
+.saved-entry-empty {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.entry-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.entry-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.entry-field input,
+.entry-field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  color: #0f172a;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.entry-field input:focus,
+.entry-field select:focus {
+  border-color: #0891b2;
+  outline: 2px solid rgba(8, 145, 178, 0.18);
+}
+
+.entry-action {
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.entry-save {
+  align-self: end;
+  color: #fff;
+  background: #0e7490;
+}
+
+.entry-export {
+  flex-shrink: 0;
+  color: #0e7490;
+  background: #ecfeff;
+}
+
+.entry-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.entry-status {
+  min-height: 20px;
+  color: #047857;
+  font-size: 13px;
+}
+
+.entry-status-error {
+  color: #be123c;
+}
+
+.saved-entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.saved-entry-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.saved-entry-details h3 {
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.saved-entry-amount {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.saved-entry-income {
+  color: #047857;
+}
+
+.saved-entry-expense {
+  color: #e11d48;
+}
+
+.saved-entry-empty {
+  padding: 12px 0;
+}
+
+@media (max-width: 600px) {
+  .entry-manager {
+    padding: 18px;
+  }
+
+  .entry-manager-header {
+    flex-direction: column;
+  }
+
+  .entry-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

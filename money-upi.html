@@ -122,7 +122,7 @@
 <p class="text-872"><span class="text-rgb-148-163-184">TOTAL ASSETS TRACKED</span></p>
 </div>
 <div class="heading-2-873">
-<p class="text-874"><span class="text-white">₹1,45,200.00</span></p>
+<p class="text-874"><span class="text-rgb-2-6-23">₹1,45,200.00</span></p>
 </div>
 </div>
 <div class="container-875">
@@ -137,19 +137,19 @@
 <p class="text-881"><span class="text-rgb-2-6-23">Active Holdings</span></p>
 </div>
 <div class="node-882">
-<div class="button-883">
+<button type="button" class="button-883" data-holding-filter="all" aria-pressed="true" aria-controls="active-holdings">
 <p class="text-884"><span class="text-rgb-15-23-42">All</span></p>
-</div>
-<div class="button-885">
+</button>
+<button type="button" class="button-885" data-holding-filter="equities" aria-pressed="false" aria-controls="active-holdings">
 <p class="text-886"><span class="text-rgb-71-85-105">Equities</span></p>
-</div>
-<div class="button-887">
+</button>
+<button type="button" class="button-887" data-holding-filter="gold" aria-pressed="false" aria-controls="active-holdings">
 <p class="text-888"><span class="text-rgb-71-85-105">Gold</span></p>
+</button>
 </div>
 </div>
-</div>
-<div class="container-889">
-<div class="holding-1-890">
+<div class="container-889" id="active-holdings">
+<div class="holding-1-890" data-category="equities">
 <div class="holding-1-shadow-891"></div>
 <div class="container-892">
 <div class="background-893">
@@ -174,7 +174,7 @@
 </div>
 </div>
 </div>
-<div class="holding-2-906">
+<div class="holding-2-906" data-category="gold">
 <div class="holding-2-shadow-907"></div>
 <div class="container-908">
 <div class="background-909">
@@ -199,7 +199,7 @@
 </div>
 </div>
 </div>
-<div class="holding-3-922">
+<div class="holding-3-922" data-category="equities">
 <div class="holding-3-shadow-923"></div>
 <div class="container-924">
 <div class="background-border-925">
@@ -224,7 +224,7 @@
 </div>
 </div>
 </div>
-<div class="holding-4-938">
+<div class="holding-4-938" data-category="equities">
 <div class="holding-4-shadow-939"></div>
 <div class="container-940">
 <div class="background-941">
@@ -303,88 +303,14 @@
     </div>
   </div>
   <p class="sip-disclaimer">Illustration only. Actual returns vary with market performance.</p>
+  <div class="sip-save-actions">
+    <button class="sip-save-button" id="sip-save-entry" type="button">Save calculation</button>
+    <button class="sip-export-button" id="sip-export-entries" type="button">Export all entries JSON</button>
+  </div>
+  <p class="sip-save-status" id="sip-save-status" role="status" aria-live="polite"></p>
+  <div class="sip-saved-list" id="sip-saved-list" aria-live="polite"></div>
 </section>
 </div>
-<script>
-  const searchInput = document.querySelector('.instrument-search');
-
-  const holdings = [
-    {
-      element: document.querySelector('.holding-1-890'),
-      name: 'Reliance Industries Ltd.'
-    },
-    {
-      element: document.querySelector('.holding-2-906'),
-      name: 'Sovereign Digital Gold Node'
-    },
-    {
-      element: document.querySelector('.holding-3-922'),
-      name: 'SBI Bluechip Largecap Fund'
-    },
-    {
-      element: document.querySelector('.holding-4-938'),
-      name: 'HDFC Bank Ltd.'
-    }
-  ];
-
-  searchInput.addEventListener('input', function () {
-    const searchText = this.value.trim().toLowerCase();
-
-    holdings.forEach(function (holding) {
-      const matches = holding.name.toLowerCase().includes(searchText);
-      holding.element.style.display = matches ? '' : 'none';
-    });
-  });
-
-  const sipInputs = [
-    document.querySelector('#sip-monthly-investment'),
-    document.querySelector('#sip-annual-return'),
-    document.querySelector('#sip-duration')
-  ];
-  const sipError = document.querySelector('.sip-error');
-  const futureValueOutput = document.querySelector('#sip-future-value');
-  const investedAmountOutput = document.querySelector('#sip-invested-amount');
-  const estimatedReturnsOutput = document.querySelector('#sip-estimated-returns');
-  const inrFormatter = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0
-  });
-
-  function calculateSip() {
-    const values = sipInputs.map(function (input) {
-      return input.valueAsNumber;
-    });
-    const isValid = sipInputs.every(function (input, index) {
-      return input.validity.valid && Number.isFinite(values[index]);
-    });
-
-    sipError.hidden = isValid;
-    if (!isValid) {
-      futureValueOutput.textContent = '—';
-      investedAmountOutput.textContent = '—';
-      estimatedReturnsOutput.textContent = '—';
-      return;
-    }
-
-    const monthlyInvestment = values[0];
-    const monthlyRate = values[1] / 100 / 12;
-    const months = values[2] * 12;
-    const investedAmount = monthlyInvestment * months;
-    const futureValue = monthlyRate === 0
-      ? investedAmount
-      : monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
-    const estimatedReturns = futureValue - investedAmount;
-
-    futureValueOutput.textContent = inrFormatter.format(futureValue);
-    investedAmountOutput.textContent = inrFormatter.format(investedAmount);
-    estimatedReturnsOutput.textContent = inrFormatter.format(estimatedReturns);
-  }
-
-  sipInputs.forEach(function (input) {
-    input.addEventListener('input', calculateSip);
-  });
-  calculateSip();
-</script>
+<script src="money-upi.js"></script>
 </body>
 </html>

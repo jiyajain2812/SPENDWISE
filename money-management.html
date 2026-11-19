@@ -297,6 +297,50 @@ Membership</span></p>
 </div>
 </div>
 </div>
+<section class="entry-manager" aria-labelledby="entry-manager-title">
+  <div class="entry-manager-header">
+    <div>
+      <h2 id="entry-manager-title">Your saved entries</h2>
+      <p>Entries are saved in this browser. Export them as a JSON file for backup.</p>
+    </div>
+    <button class="entry-action entry-export" id="export-entries" type="button">Export JSON</button>
+  </div>
+  <form class="entry-form" id="entry-form">
+    <label class="entry-field entry-description">
+      Description
+      <input name="description" type="text" maxlength="100" placeholder="e.g. Grocery shopping" required>
+    </label>
+    <label class="entry-field">
+      Amount (₹)
+      <input name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+    </label>
+    <label class="entry-field">
+      Type
+      <select name="type" required>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </label>
+    <label class="entry-field">
+      Category
+      <select name="category" required>
+        <option value="Dining">Dining</option>
+        <option value="Digital Services">Digital Services</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Bills">Bills</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+    <label class="entry-field">
+      Date
+      <input name="date" type="date" required>
+    </label>
+    <button class="entry-action entry-save" type="submit">Add entry</button>
+  </form>
+  <p class="entry-status" id="entry-status" role="status" aria-live="polite"></p>
+  <div class="saved-entry-list" id="saved-entry-list" aria-live="polite"></div>
+</section>
 </div>
 <div class="node-422">
 <div class="heading-3-423">
@@ -375,6 +419,180 @@ portfolio advisory access</span></p>
 </div>
 </div>
 </div>
+<script>
+  (() => {
+    const storageKey = "spendwise.entries.v1";
+    const form = document.getElementById("entry-form");
+    const list = document.getElementById("saved-entry-list");
+    const status = document.getElementById("entry-status");
+    const exportButton = document.getElementById("export-entries");
+    const dateInput = form.elements.date;
+    let entries = [];
+    let storageReady = true;
+
+    const getLocalDate = (daysAgo = 0) => {
+      const today = new Date();
+      today.setDate(today.getDate() - daysAgo);
+      const month = String(today.getMonth() + 1).padStart(2, "0");
+      const day = String(today.getDate()).padStart(2, "0");
+      return `${today.getFullYear()}-${month}-${day}`;
+    };
+
+    const existingUpiEntries = [
+      {
+        id: "upi-swiggy-gourmet",
+        description: "Swiggy Gourmet Delivery",
+        amount: 340,
+        type: "expense",
+        category: "Dining & Provisions",
+        date: getLocalDate()
+      },
+      {
+        id: "upi-amazon-prime",
+        description: "Amazon Prime Subscription",
+        amount: 1299,
+        type: "expense",
+        category: "Digital Services",
+        date: getLocalDate()
+      },
+      {
+        id: "upi-metro-transit",
+        description: "Metro Transit Line",
+        amount: 180,
+        type: "expense",
+        category: "Transportation",
+        date: getLocalDate(1)
+      }
+    ];
+
+    const showStatus = (message, isError = false) => {
+      status.textContent = message;
+      status.classList.toggle("entry-status-error", isError);
+    };
+
+    const renderEntries = () => {
+      list.replaceChildren();
+      if (entries.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "saved-entry-empty";
+        emptyMessage.textContent = "No entries saved yet. Add one above to get started.";
+        list.append(emptyMessage);
+        return;
+      }
+
+      entries.forEach((entry) => {
+        const item = document.createElement("article");
+        item.className = "saved-entry-item";
+
+        const details = document.createElement("div");
+        details.className = "saved-entry-details";
+        const title = document.createElement("h3");
+        title.textContent = entry.description;
+        const metadata = document.createElement("p");
+        metadata.textContent = entry.entryKind === "sip-calculation"
+          ? `${entry.date} · SIP · ${entry.annualReturn}% expected annual return · ${entry.durationYears} years · Future value ${new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(entry.futureValue)}`
+          : `${entry.date} · ${entry.category} · ${entry.type}`;
+        details.append(title, metadata);
+
+        const amount = document.createElement("p");
+        amount.className = `saved-entry-amount saved-entry-${entry.type}`;
+        const formattedAmount = new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR"
+        }).format(entry.amount);
+        const amountSuffix = entry.entryKind === "sip-calculation" ? " / month" : "";
+        amount.textContent = `${entry.type === "income" ? "+" : "−"}${formattedAmount}${amountSuffix}`;
+
+        item.append(details, amount);
+        list.append(item);
+      });
+    };
+
+    const isValidEntry = (entry) =>
+      entry !== null &&
+      typeof entry === "object" &&
+      typeof entry.id === "string" &&
+      typeof entry.description === "string" &&
+      typeof entry.amount === "number" &&
+      Number.isFinite(entry.amount) &&
+      (entry.type === "income" || entry.type === "expense") &&
+      typeof entry.category === "string" &&
+      typeof entry.date === "string";
+
+    try {
+      const savedEntries = localStorage.getItem(storageKey);
+      if (savedEntries !== null) {
+        entries = JSON.parse(savedEntries);
+        if (!Array.isArray(entries) || !entries.every(isValidEntry)) {
+          throw new Error("Saved entry data is not in the expected format.");
+        }
+      }
+      const savedIds = new Set(entries.map((entry) => entry.id));
+      const missingUpiEntries = existingUpiEntries.filter((entry) => !savedIds.has(entry.id));
+      if (missingUpiEntries.length > 0) {
+        entries = [...entries, ...missingUpiEntries];
+        localStorage.setItem(storageKey, JSON.stringify(entries));
+      }
+    } catch (error) {
+      storageReady = false;
+      form.querySelector('button[type="submit"]').disabled = true;
+      exportButton.disabled = true;
+      showStatus(`Could not load saved entries: ${error.message}`, true);
+    }
+
+    dateInput.value = getLocalDate();
+    renderEntries();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!storageReady) {
+        showStatus("Entries cannot be saved until browser storage is available.", true);
+        return;
+      }
+
+      const formData = new FormData(form);
+      const entry = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        description: formData.get("description").trim(),
+        amount: Number(formData.get("amount")),
+        type: formData.get("type"),
+        category: formData.get("category"),
+        date: formData.get("date")
+      };
+
+      if (!entry.description || !Number.isFinite(entry.amount) || entry.amount <= 0) {
+        showStatus("Enter a description and an amount greater than zero.", true);
+        return;
+      }
+
+      const updatedEntries = [entry, ...entries];
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(updatedEntries));
+      } catch (error) {
+        showStatus(`Could not save this entry: ${error.message}`, true);
+        return;
+      }
+
+      entries = updatedEntries;
+      renderEntries();
+      form.reset();
+      dateInput.value = getLocalDate();
+      showStatus("Entry saved in this browser.");
+    });
+
+    exportButton.addEventListener("click", () => {
+      const json = JSON.stringify({ version: 1, entries }, null, 2);
+      const file = new Blob([json], { type: "application/json" });
+      const downloadUrl = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = "spendwise-entries.json";
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      showStatus("Your JSON file has been downloaded.");
+    });
+  })();
+</script>
 
 </body>
 </html>
