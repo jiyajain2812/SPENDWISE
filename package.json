@@ -2,7 +2,7 @@
   "name": "spendwisee",
   "version": "1.0.0",
   "description": "webdev project",
-  "main": "dashboard.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/jiyajain2812/SPENDWISE/issues"
   },
-  "homepage": "https://github.com/jiyajain2812/SPENDWISE#readme"
+  "homepage": "https://github.com/jiyajain2812/SPENDWISE#readme",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "mongoose": "^9.12.2"
+  }
 }

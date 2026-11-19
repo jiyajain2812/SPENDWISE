@@ -1,5 +1,7 @@
 
-const API_URL = "http://localhost:3000/api/expenses";
+const API_URL = window.location.origin.includes("3000")
+  ? "/api/expenses"
+  : "http://localhost:3000/api/expenses";
 
 const form = document.getElementById("expenseForm");
 const titleInput = document.getElementById("expenseTitle");

@@ -1,10 +1,95 @@
-
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { expenseRoutes } = require("./routes/expenseRoutes");
+const { investmentRoutes } = require("./routes/investmentRoutes");
+const { connectDB } = require("./config/db");
 
-const PORT = 3000;
-const DATA_FILE = path.join(__dirname, "expenses.json");
+const PORT = process.env.PORT || 3000;
+
+const MIME_TYPES = {
+  ".html": "text/html; charset=UTF-8",
+  ".css":  "text/css; charset=UTF-8",
+  ".js":   "application/javascript; charset=UTF-8",
+  ".json": "application/json; charset=UTF-8",
+  ".png":  "image/png",
+  ".svg":  "image/svg+xml",
+  ".jpg":  "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".ico":  "image/x-icon",
+};
+
+const VIEW_MAP = {
+  "/": "login.html",
+  "/login": "login.html",
+  "/login.html": "login.html",
+  "/views/login.html": "login.html",
+  "/dashboard": "dashboard.html",
+  "/dashboard.html": "dashboard.html",
+  "/views/dashboard.html": "dashboard.html",
+  "/academy": "academy.html",
+  "/academy.html": "academy.html",
+  "/views/academy.html": "academy.html",
+  "/money-management": "money-management.html",
+  "/money-management.html": "money-management.html",
+  "/views/money-management.html": "money-management.html",
+  "/money-upi": "money-upi.html",
+  "/money-upi.html": "money-upi.html",
+  "/views/money-upi.html": "money-upi.html",
+};
+
+function serveFile(res, filePath) {
+  try {
+    if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+      return false;
+    }
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || "application/octet-stream";
+    res.writeHead(200, { "Content-Type": contentType });
+    fs.createReadStream(filePath).pipe(res);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function handleStatic(req, res) {
+  const urlPath = req.url.split("?")[0].replace(/\\/g, "/");
+
+  // 1. Direct view route matches
+  if (VIEW_MAP[urlPath]) {
+    const targetFile = path.join(__dirname, "views", VIEW_MAP[urlPath]);
+    return serveFile(res, targetFile);
+  }
+
+  // 2. Views folder requests (/views/xyz.html)
+  if (urlPath.startsWith("/views/")) {
+    const filename = urlPath.replace("/views/", "");
+    const viewPath = path.join(__dirname, "views", filename);
+    if (serveFile(res, viewPath)) return true;
+  }
+
+  // 3. Public asset requests (/public/...)
+  if (urlPath.startsWith("/public/")) {
+    const rel = urlPath.replace("/public/", "");
+    const publicPath = path.join(__dirname, "public", rel);
+    if (serveFile(res, publicPath)) return true;
+  }
+
+  // 4. Relative paths fallback (/css/..., /js/..., /images/...)
+  if (urlPath.startsWith("/css/") || urlPath.startsWith("/js/") || urlPath.startsWith("/images/")) {
+    const fallbackPath = path.join(__dirname, "public", urlPath.replace(/^\//, ""));
+    if (serveFile(res, fallbackPath)) return true;
+  }
+
+  // 5. Root file fallback (e.g. index.html)
+  const rootPath = path.join(__dirname, urlPath.replace(/^[/\\]+/, ""));
+  if (rootPath.startsWith(__dirname) && serveFile(res, rootPath)) {
+    return true;
+  }
+
+  return false;
+}
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -16,97 +101,23 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // Read all saved expenses
-  if (req.url === "/api/expenses" && req.method === "GET") {
-    fs.readFile(DATA_FILE, "utf8", (err, data) => {
-      if (err) {
-        res.writeHead(500);
-        return res.end(JSON.stringify({ error: "Could not read expenses" }));
-      }
+  // 1. API routes (Expenses & Investments)
+  if (expenseRoutes(req, res) !== false) return;
+  if (investmentRoutes(req, res) !== false) return;
 
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(data);
-    });
-    return;
-  }
+  // 2. Static files & Views
+  if (req.method === "GET" && handleStatic(req, res)) return;
 
-  // Save a submitted expense
-  if (req.url === "/api/expenses" && req.method === "POST") {
-    let body = "";
-
-    req.on("data", chunk => {
-      body += chunk;
-      if (body.length > 10000) req.destroy();
-    });
-
-    req.on("end", () => {
-      try {
-        const expense = JSON.parse(body);
-        const amount = Number(expense.amount);
-
-        if (
-          typeof expense.title !== "string" ||
-          !expense.title.trim() ||
-          !Number.isFinite(amount) ||
-          amount <= 0 ||
-          amount > 100000000 ||
-          typeof expense.category !== "string" ||
-          !expense.category.trim() ||
-          typeof expense.date !== "string" ||
-          !/^\d{4}-\d{2}-\d{2}$/.test(expense.date)
-        ) {
-          res.writeHead(400, { "Content-Type": "application/json" });
-          return res.end(JSON.stringify({ error: "Please provide valid expense details" }));
-        }
-
-        fs.readFile(DATA_FILE, "utf8", (err, data) => {
-          if (err) {
-            res.writeHead(500);
-            return res.end(JSON.stringify({ error: "Could not read expense file" }));
-          }
-
-          try {
-            const savedData = JSON.parse(data || '{"expenses":[]}');
-            if (!Array.isArray(savedData.expenses)) {
-              throw new Error("Invalid expenses file");
-            }
-
-            const record = {
-              id: Date.now().toString(),
-              title: expense.title.trim(),
-              amount,
-              category: expense.category.trim(),
-              date: expense.date
-            };
-
-            savedData.expenses.push(record);
-
-            fs.writeFile(DATA_FILE, JSON.stringify(savedData, null, 2), writeErr => {
-              if (writeErr) {
-                res.writeHead(500);
-                return res.end(JSON.stringify({ error: "Could not save expense" }));
-              }
-
-              res.writeHead(201, { "Content-Type": "application/json" });
-              res.end(JSON.stringify({ message: "Expense saved!", expense: record }));
-            });
-          } catch {
-            res.writeHead(500, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ error: "Invalid expenses file" }));
-          }
-        });
-      } catch {
-        res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Invalid JSON" }));
-      }
-    });
-    return;
-  }
-
+  // 3. 404 fallback
   res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "Route not found" }));
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
   console.log(`SpendWise server running at http://localhost:${PORT}`);
+  try {
+    await connectDB();
+  } catch (err) {
+    // Error logged in connectDB
+  }
 });
