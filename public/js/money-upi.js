@@ -122,6 +122,7 @@ async function loadAndRenderSipCalculations() {
   }
 }
 
+// sip calculation logic
 function calculateSip() {
   const values = sipInputs.map(function (input) {
     return input.valueAsNumber;

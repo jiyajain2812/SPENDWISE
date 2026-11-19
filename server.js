@@ -113,11 +113,15 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify({ error: "Route not found" }));
 });
 
-server.listen(PORT, async () => {
-  console.log(`SpendWise server running at http://localhost:${PORT}`);
-  try {
-    await connectDB();
-  } catch (err) {
-    // Error logged in connectDB
-  }
-});
+if (require.main === module) {
+  server.listen(PORT, async () => {
+    console.log(`SpendWise server running at http://localhost:${PORT}`);
+    try {
+      await connectDB();
+    } catch (err) {
+      // Error logged in connectDB
+    }
+  });
+}
+
+module.exports = server;
